@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.use("/sitzungen", require("./router/sitzung"));
 
 app.get("/", (req, res) => {
-	res.redirect("/sitzungen");		// Only if logged in
+	res.redirect("/sitzungen");		// Only if logged in (Later implementation)
 });
 
 app.listen(PORT, () => {
