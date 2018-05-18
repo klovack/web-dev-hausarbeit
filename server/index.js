@@ -24,7 +24,7 @@ require("./config/passport")(passport);
 app.use("/sitzungen", sitzungRoute);
 
 // User Router
-app.use("/user", userRoute);
+app.use("/users", userRoute);
 
 app.listen(PORT, () => {
 	console.log(`Server is listening on port ${PORT}`);
