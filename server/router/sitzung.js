@@ -1,6 +1,7 @@
 const router = require("express").Router();     // eslint-disable-line
 const bodyParser = require("body-parser");
 const moment = require("moment");
+const passport = require("passport");
 const { ObjectID } = require("mongodb");
 
 const { mongoose } = require("../db/mongoose");		// eslint-disable-line
@@ -10,8 +11,8 @@ const { Sitzung } = require("../models/sitzung");
 router.use(bodyParser.json());
 
 // Show all sitzung
-router.get("/", (req, res) => {
-	Sitzung.find()
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+	Sitzung.find({ _benutzer: req.user._id })
 		.then(sitzungen => {
 			res.send({ sitzungen });			// Send sitzung if found
 		}, error => {
@@ -23,10 +24,11 @@ router.get("/", (req, res) => {
 });
 
 // Create new sitzung
-router.post("/", (req, res) => {
+router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
 	let sitzung = new Sitzung({
 		ort: req.body.ort,
-		beobachtendeObjekte: req.body.beobachtendeObjekte
+		beobachtendeObjekte: req.body.beobachtendeObjekte,
+		_benutzer: req.user._id
 	});
 
 	// Check if the date provided is valid
@@ -52,7 +54,7 @@ router.post("/", (req, res) => {
 });
 
 // Show specific sitzung associated with the id
-router.get("/:id", (req, res) => {
+router.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
 	const { id } = req.params;
 
 	// Check if the id is valid
@@ -63,12 +65,15 @@ router.get("/:id", (req, res) => {
 		});
 	}
 
-	Sitzung.findById(id)
+	Sitzung.findOne({
+		_id: id,
+		_benutzer: req.user._id
+	})
 		.then(sitzung => {
 			if (!sitzung) {
 				return res.status(404).send({
 					message: "Sitzung with that id is not in the database",
-					name: "IDNotFound"
+					name: "IDNotFoundError"
 				});
 			}
 			return res.status(200).send({ sitzung });
@@ -80,7 +85,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Delete the sitzung associated with the id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
 	const { id } = req.params;
 
 	// Check if the id is valid
@@ -91,12 +96,15 @@ router.delete("/:id", (req, res) => {
 		});
 	}
 
-	Sitzung.findByIdAndRemove(id)
+	Sitzung.findOneAndRemove({
+		_id: id,
+		_benutzer: req.user._id
+	})
 		.then(sitzung => {
 			if (!sitzung) {
 				return res.status(404).send({
 					message: "Sitzung with that id is not in the database",
-					name: "IDNotFound"
+					name: "IDNotFoundError"
 				});
 			}
 
@@ -110,7 +118,7 @@ router.delete("/:id", (req, res) => {
 });
 
 // Edit the sitzung associated with the id
-router.patch("/:id", (req, res) => {
+router.patch("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
 	const { id } = req.params;
 	let toBeUpdated = {};
 
@@ -142,12 +150,15 @@ router.patch("/:id", (req, res) => {
 	}
 
 	// Update the sitzung
-	Sitzung.findByIdAndUpdate(id, { $set: toBeUpdated }, { new: true })
+	Sitzung.findOneAndUpdate({
+		_id: id,
+		_benutzer: req.user._id
+	}, { $set: toBeUpdated }, { new: true })
 		.then(sitzung => {
 			if (!sitzung) {
 				return res.status(404).send({
 					message: "Sitzung with that id is not in the database",
-					name: "IDNotFound"
+					name: "IDNotFoundError"
 				});
 			}
 
