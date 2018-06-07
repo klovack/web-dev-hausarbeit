@@ -12,7 +12,7 @@ const SitzungSchema = new mongoose.Schema({
 	beobachtendeObjekte: [String],
 	_benutzer: {
 		type: mongoose.Schema.Types.ObjectId,
-		required: true
+		// required: true
 	}
 });
 
