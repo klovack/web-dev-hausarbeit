@@ -10,9 +10,11 @@ const { Sitzung } = require("../models/sitzung");
 // Use body parser
 router.use(bodyParser.json());
 
+// router.use(passport.authenticate("jwt", { session: false }));
+
 // Show all sitzung
-router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-	Sitzung.find({ _benutzer: req.user._id })
+router.get("/", (req, res) => {
+	Sitzung.find()
 		.then(sitzungen => {
 			res.send({ sitzungen });			// Send sitzung if found
 		}, error => {
@@ -24,11 +26,11 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => 
 });
 
 // Create new sitzung
-router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+router.post("/", (req, res) => {
 	let sitzung = new Sitzung({
 		ort: req.body.ort,
 		beobachtendeObjekte: req.body.beobachtendeObjekte,
-		_benutzer: req.user._id
+		// _benutzer: req.user._id
 	});
 
 	// Check if the date provided is valid
@@ -54,7 +56,7 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 });
 
 // Show specific sitzung associated with the id
-router.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
+router.get("/:id", (req, res) => {
 	const { id } = req.params;
 
 	// Check if the id is valid
@@ -67,7 +69,7 @@ router.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) 
 
 	Sitzung.findOne({
 		_id: id,
-		_benutzer: req.user._id
+		// _benutzer: req.user._id
 	})
 		.then(sitzung => {
 			if (!sitzung) {
@@ -85,7 +87,7 @@ router.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) 
 });
 
 // Delete the sitzung associated with the id
-router.delete("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
+router.delete("/:id", (req, res) => {
 	const { id } = req.params;
 
 	// Check if the id is valid
@@ -98,7 +100,7 @@ router.delete("/:id", passport.authenticate("jwt", { session: false }), (req, re
 
 	Sitzung.findOneAndRemove({
 		_id: id,
-		_benutzer: req.user._id
+		// _benutzer: req.user._id
 	})
 		.then(sitzung => {
 			if (!sitzung) {
@@ -118,7 +120,7 @@ router.delete("/:id", passport.authenticate("jwt", { session: false }), (req, re
 });
 
 // Edit the sitzung associated with the id
-router.patch("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
+router.patch("/:id", (req, res) => {
 	const { id } = req.params;
 	let toBeUpdated = {};
 
@@ -152,7 +154,7 @@ router.patch("/:id", passport.authenticate("jwt", { session: false }), (req, res
 	// Update the sitzung
 	Sitzung.findOneAndUpdate({
 		_id: id,
-		_benutzer: req.user._id
+		// _benutzer: req.user._id
 	}, { $set: toBeUpdated }, { new: true })
 		.then(sitzung => {
 			if (!sitzung) {
