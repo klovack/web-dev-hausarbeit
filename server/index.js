@@ -2,12 +2,21 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const passport = require("passport");
+const yargs = require("yargs");
 
 const sitzungRoute = require("./router/sitzung");
 const userRoute = require("./router/user");
 
+const argv = yargs
+	.option("port", {
+		alias: "p",
+		describe: "Specified port which server listens to. \nIf it's not specified, the server will listen to port number 3000",
+		type: "number"
+	})
+	.argv;
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || argv.port || 3000;
 
 // CORS Middleware
 app.use(cors());
