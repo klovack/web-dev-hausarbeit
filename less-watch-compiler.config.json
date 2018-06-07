@@ -1,0 +1,11 @@
+
+
+{
+    "watchFolder": "server/less",   
+    "outputFolder": "public/styles/css",
+    "mainFile": "styles.less",   
+    "sourceMap": false,
+    "runOnce": false,
+    "enableJs": true,
+    "minified": false
+}
