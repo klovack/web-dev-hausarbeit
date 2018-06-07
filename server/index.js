@@ -10,7 +10,7 @@ const userRoute = require("./router/user");
 const argv = yargs
 	.option("port", {
 		alias: "p",
-		describe: "Specified port which server listens to. \nIf it's not specified, the server will listen to port number 3000",
+		describe: "Specified port number which server listens to. \nIf it's not specified, the server will listen to port number 3000",
 		type: "number"
 	})
 	.argv;

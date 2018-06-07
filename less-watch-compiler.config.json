@@ -1,7 +1,7 @@
 
 
 {
-    "watchFolder": "server/less",   
+    "watchFolder": "client/less",   
     "outputFolder": "public/styles/css",
     "mainFile": "styles.less",   
     "sourceMap": false,
