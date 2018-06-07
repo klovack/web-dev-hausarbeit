@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint **/*.js",
+    "lint": "eslint -c ./eslintrc.json **/*.js",
     "start": "node server/index.js",
-    "bundle:js": "browserify client/js/main.js -o public/js/bundle.js"
+    "bundle:js": "browserify client/js/main.js -o public/js/bundle.js",
+    "bundle:css": "lessc client/less/styles.less public/css/styles.css",
+    "clean:public": "rm -rf public/",
+    "static": "cp client/index.html public/index.html",
+    "static:min": "cp client/min/index.html public/index.html"
   },
-  "author": "Muhammad Fikriansyah",
+  "author": "Muhammad Fikriansyah und Jeremy Koch",
   "license": "ISC",
   "devDependencies": {
     "browserify": "^16.2.2",
