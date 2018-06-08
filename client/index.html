@@ -5,12 +5,85 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
         <title>WebEntwicklung Hausarbeit SS18</title>
     </head>
   
     <body>
-        <p>Hallo Welt!</p>
+
+        <div id="main_container">
+
+            <header class="outer">
+                <div id="header_container">
+                    <i class="material-icons">public</i>
+                    <h1 id="main_header">AstroSession</h1>
+                </div>   
+            </header>
+
+            <section>
+
+                <div id="left_content">
+
+                    <h2 id="session_header">Sitzungen</h2>
+
+                    <ul id="session_list">
+
+                        <li class="session_item">
+                            <span class="session_place">Trier</span>
+                            <span class="session_date">23.10.1996</span>
+                            <i class="material-icons">place</i>
+                        </li>
+
+                        <li class="session_item">
+                            <span class="session_place">Frankfurt</span>
+                            <span class="session_date">20.02.1982</span>
+                            <i class="material-icons">place</i>
+                        </li>
+
+                        <li class="session_item">
+                            <span class="session_place">Lat: 12,52114 Long: 9,30259</span>
+                            <span class="session_date">02.04.1973</span>
+                            <i class="material-icons">place</i>
+                        </li>
+
+                        <li class="session_item">
+                            <span class="session_place">Berlin</span>    
+                            <span class="session_date">03.06.1962</span>
+                            <i class="material-icons">place</i>
+                        </li>
+
+                        <li class="session_item">
+                            <span class="session_place">München</span>
+                            <span class="session_date">15.05.1945</span>
+                            <i class="material-icons">place</i>
+                        </li>
+                       
+                    </ul>
+
+                    <div id="controls">
+
+                        <div id="vor">
+                            <i class="material-icons md-48">arrow_left</i>
+                        </div>
+
+                        <div id="naechste">
+                            <i class="material-icons md-48">arrow_right</i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="right_content">
+
+                </div>
+
+            </section>
+            <footer class="outer">
+
+            </footer>
+        </div>
         <script src="js/bundle.js"></script>
     </body>
 </html>
