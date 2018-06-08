@@ -16,7 +16,7 @@ module.exports = datei2;
 const datei1 = require("./datei1");
 const datei2 = require("./datei2");
 
-datei1();
-datei2();
+//datei1();
+//datei2();
 
 },{"./datei1":1,"./datei2":2}]},{},[3]);
