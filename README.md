@@ -49,3 +49,9 @@ PATCH /sitzungen/:id
 ```
 DELETE /sitzungen/:id
 ```
+
+## NPM Build Prozesse
+- `npm run lint` lintet alle JS-Dateien im Projekt auf Grundlage der `.eslintrc.json`
+- `npm run build` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien minifiziert
+- `npm run debug` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien aber nicht minifiziert
+- `npm run start` oder `npm start` startet den HTTP-Server an Port 8080 oder `npm run start --port=[Portnummer]` um den HTTP-Server Port zu spezifieren

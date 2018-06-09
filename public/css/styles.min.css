@@ -1,0 +1,1 @@
+body,html{height:100%;margin:0;background-color:#f6f6f6}.outer{height:60px}#main_container{display:flex;flex-direction:column;height:100%;margin-left:5%;margin-right:5%}header{background-color:#b0c4de;order:1;border-bottom:1px solid #000}section{background-color:#ffb6c1;order:2;flex-grow:1}footer{background-color:#fafad2;order:3;border-top:1px solid #000}

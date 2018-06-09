@@ -4,19 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint -c ./eslintrc.json **/*.js",
-    "start": "node server/index.js",
-    "bundle:js": "browserify client/js/main.js -o public/js/bundle.js",
+    "build": "npm run clean:public && npm run lint && npm run bundle:js:min && npm run bundle:css:min && npm run static:min",
     "bundle:css": "lessc client/less/styles.less public/css/styles.css",
-    "clean:public": "rm -rf public/",
-    "static": "cp client/index.html public/index.html",
-    "static:min": "cp client/min/index.html public/index.html"
+    "bundle:css:min": "npm run bundle:css && cleancss public/css/styles.css -o public/css/styles.min.css && rm public/css/styles.css",
+    "bundle:js": "browserify client/js/main.js -o public/js/bundle.js",
+    "bundle:js:min": "npm run bundle:js && minify public/js/bundle.js --out-file public/js/bundle.min.js && rm public/js/bundle.js",
+    "clean:public": "rm -rf public/ || del public/",
+    "debug": "npm run clean:public && npm run lint && npm run bundle:js && npm run bundle:css && npm run static",
+    "lint": "eslint -c ./.eslintrc.json **/*.js",
+    "start": "node server/index.js",
+    "static": "cp client/index.html public/index.html || copy client/index.html public/",
+    "static:min": "cp client/min/index.html public/index.html || copy client/min/index.html public/"
   },
   "author": "Muhammad Fikriansyah und Jeremy Koch",
   "license": "ISC",
   "devDependencies": {
+    "babel-minify": "^0.4.3",
     "browserify": "^16.2.2",
+    "clean-css-cli": "^4.1.11",
     "eslint": "^4.19.1",
+    "less": "^3.0.4",
     "nodemon": "^1.17.4"
   },
   "dependencies": {

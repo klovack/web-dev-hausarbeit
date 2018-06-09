@@ -14,7 +14,12 @@ router.use(bodyParser.json());
 
 // Show all sitzung
 router.get("/", (req, res) => {
-	Sitzung.find()
+	// TODO check the validity of the query
+	const count = req.query.count;
+	const page = req.query.page;
+	const skip = count * page;
+
+	Sitzung.find({}, null, { skip })
 		.then(sitzungen => {
 			res.send({ sitzungen });			// Send sitzung if found
 		}, error => {
