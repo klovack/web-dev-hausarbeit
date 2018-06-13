@@ -8,7 +8,7 @@ Die Clientseitige Anwendung (Public) kann an der Serverseitige Anwendung (Server
 Hier wird zurzeit nur Backend implementiert.
 
 ### Version
-0.4.0
+0.6.0
 
 ## Anwendung
 ```
@@ -19,7 +19,6 @@ node server/index.js
 ## Schnittstelle
 
 #### Benutzer
-Benutzer sich anzumelden
 ```
 POST /users/register
 ```
@@ -51,7 +50,8 @@ DELETE /sitzungen/:id
 ```
 
 ## NPM Build Prozesse
+- `npm run clean:public` löscht den Public Ordner
 - `npm run lint` lintet alle JS-Dateien im Projekt auf Grundlage der `.eslintrc.json`
 - `npm run build` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien minifiziert
 - `npm run debug` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien aber nicht minifiziert
-- `npm run start` oder `npm start` startet den HTTP-Server an Port 8080 oder `npm run start --port=[Portnummer]` um den HTTP-Server Port zu spezifieren
+- `npm run start` oder `npm start` startet den HTTP-Server an Port 8080 oder `npm run start --port=[Portnummer]` um den HTTP-Server Port zu spezifieren. Stellen Sie sicher, dass MongoDB schon im Hintergrund ausgeführt wird. Aufgrund der unterschiedlichen Installationen von MongoDB kann MongoDB als npm-build-prozess nicht ausgeführt werden.
