@@ -7,96 +7,92 @@
         <link rel="stylesheet" href="./css/styles.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <title>WebEntwicklung Hausarbeit SS18</title>
+        <title>AstroSession - WebEntwicklung Hausarbeit SS18</title>
     </head>
   
     <body>
 
-        <div id="main_container">
+        <header>
 
-            <header class="outer">
-                <div id="header_container">
-                    <i class="material-icons">public</i>
-                    <h1 id="main_header">AstroSession</h1>
-                </div>   
-            </header>
+            <div class="header-element-container">
+                <i class="material-icons md-24">public</i>
+                <h1>AstroSession</h1>
+            </div>
+
+        </header>
+
+        <main>
+
+            <aside>
+
+                <div class="aside-header-container">
+                    <i class="material-icons md-24">near_me</i>
+                    <h2>Sitzungen</h2>
+                </div>
+
+                <div class="aside-content-container">
+                    <ul>
+                        <li>
+                            <div class="list-item">
+                                <div>
+                                    <span>Trier</span>
+                                    <i class="material-icons md-18">place</i>
+                                </div>  
+                                <span>23.10.1996</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <div>
+                                    <span>Frankfurt</span>
+                                    <i class="material-icons md-18">place</i>
+                                </div>
+                                <span>20.02.1982</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <div>
+                                    <span>Lat: 12,34567 Long: 9,30367</span>
+                                    <i class="material-icons md-18">place</i>
+                                </div>
+                                <span>02.04.1973</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>  
+
+                <div class="aside-footer-container">
+                    <div>
+                        <i class="material-icons md-48">arrow_left</i>
+                    </div>
+                    <div>
+                        <i class="material-icons md-48">arrow_right</i>
+                    </div>
+                </div>
+
+            </aside>
 
             <section>
-
-                <div id="left_content">
-
-                    <h2 id="session_header">Sitzungen</h2>
-
-                    <ul id="session_list">
-
-                        <li class="session_item">
-                            <span class="session_place">Trier</span>
-                            <span class="session_date">23.10.1996</span>
-                            <i class="material-icons">place</i>
-                        </li>
-
-                        <li class="session_item">
-                            <span class="session_place">Frankfurt</span>
-                            <span class="session_date">20.02.1982</span>
-                            <i class="material-icons">place</i>
-                        </li>
-
-                        <li class="session_item">
-                            <span class="session_place">Lat: 12,52114 Long: 9,30259</span>
-                            <span class="session_date">02.04.1973</span>
-                            <i class="material-icons">place</i>
-                        </li>
-
-                        <li class="session_item">
-                            <span class="session_place">Berlin</span>    
-                            <span class="session_date">03.06.1962</span>
-                            <i class="material-icons">place</i>
-                        </li>
-
-                        <li class="session_item">
-                            <span class="session_place">München</span>
-                            <span class="session_date">15.05.1945</span>
-                            <i class="material-icons">place</i>
-                        </li>
-                       
-                    </ul>
-
-                    <div id="controls_left">
-
-                        <div id="vor">
-                            <i class="material-icons md-48">arrow_left</i>
-                        </div>
-
-                        <div id="naechste">
-                            <i class="material-icons md-48">arrow_right</i>
-                        </div>
-
+                <div class="section-header-container">
+                    <div>
+                        <i class="material-icons md-24">info</i>
+                        <h2>Sitzungsinformationen</h2>
                     </div>
-
+                    <i class="material-icons md-36">edit</i>
                 </div>
 
-                <div id="right_content">
-
-                    <div id="content_right">
-                        
-                    </div>
-
-                    <div id="controls_right">
-                        <div id="add_session">
-                            <i class="material-icons md-48">add_circle</i>
-                        </div>
-                    </div>
-
+                <div class="section-content-container">
+                    
                 </div>
-
             </section>
-            <footer class="outer">
-                <div>
-                    <i class="material-icons md-18">copyright</i>
-                    <span id="copyright_text">by Rizki & Jeremy</span> 
-                </div>
-            </footer>
-        </div>
+
+        </main>
+
+        <footer>
+            <p>By Rizki & Jeremy</p>
+        </footer>
+
         <script src="js/bundle.js"></script>
     </body>
 </html>
