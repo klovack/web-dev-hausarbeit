@@ -16,7 +16,7 @@ const argv = yargs
 	.argv;
 
 const app = express();
-const PORT = process.env.PORT || argv.port || 3000;
+const PORT = process.env.PORT || argv.port || 8080;
 
 // CORS Middleware
 app.use(cors());

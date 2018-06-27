@@ -5,31 +5,93 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
-        <title>WebEntwicklung Hausarbeit SS18</title>
+        <title>AstroSession - WebEntwicklung Hausarbeit SS18</title>
     </head>
   
     <body>
 
-        <div id="main_container">
-            <header class="outer">
-                <div>
-                    <h1 id="main_header">AstroSession</h1>
-                </div>   
-            </header>
+        <header>
+
+            <div class="header-element-container">
+                <i class="material-icons md-24">public</i>
+                <h1>AstroSession</h1>
+            </div>
+
+        </header>
+
+        <main>
+
+            <aside>
+
+                <div class="aside-header-container">
+                    <i class="material-icons md-24">near_me</i>
+                    <h2>Sitzungen</h2>
+                </div>
+
+                <div class="aside-content-container">
+                    <ul>
+                        <li>
+                            <div class="list-item">
+                                <div>
+                                    <span>Trier</span>
+                                    <i class="material-icons md-18">place</i>
+                                </div>  
+                                <span>23.10.1996</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <div>
+                                    <span>Frankfurt</span>
+                                    <i class="material-icons md-18">place</i>
+                                </div>
+                                <span>20.02.1982</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <div>
+                                    <span>Lat: 12,34567 Long: 9,30367</span>
+                                    <i class="material-icons md-18">place</i>
+                                </div>
+                                <span>02.04.1973</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>  
+
+                <div class="aside-footer-container">
+                    <div>
+                        <i class="material-icons md-48">arrow_left</i>
+                    </div>
+                    <div>
+                        <i class="material-icons md-48">arrow_right</i>
+                    </div>
+                </div>
+
+            </aside>
 
             <section>
-                <div id="left_content">
-                    Left
+                <div class="section-header-container">
+                    <div>
+                        <i class="material-icons md-24">info</i>
+                        <h2>Sitzungsinformationen</h2>
+                    </div>
+                    <i class="material-icons md-36">edit</i>
                 </div>
-                <div id="right_content">
-                    Right
+
+                <div class="section-content-container">
+                    
                 </div>
             </section>
-            <footer class="outer">
 
-            </footer>
-        </div>
+        </main>
+
+        <footer>
+            <p>By Rizki & Jeremy</p>
+        </footer>
+
         <script src="js/bundle.js"></script>
     </body>
-</html>
