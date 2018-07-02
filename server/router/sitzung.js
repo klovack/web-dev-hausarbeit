@@ -1,7 +1,7 @@
 const router = require("express").Router();     // eslint-disable-line
 const bodyParser = require("body-parser");
 const moment = require("moment");
-const passport = require("passport");
+//const passport = require("passport");			// uncomment this line if user authorization is to be implemented
 const { ObjectID } = require("mongodb");
 
 const { mongoose } = require("../db/mongoose");		// eslint-disable-line
@@ -12,7 +12,7 @@ const queryCheck = require("../middleware/queryCheck");
 router.use(bodyParser.json());
 
 // If user authorization is to be implemented, each
-//"_benutzer: req.user._id"
+// "_benutzer: req.user._id"
 // And line below has to be uncommented
 // router.use(passport.authenticate("jwt", { session: false }));
 
