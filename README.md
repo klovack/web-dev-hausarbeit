@@ -51,6 +51,7 @@ DELETE /sitzungen/:id
 
 ## NPM Build Prozesse
 - `npm run clean:public` löscht den Public Ordner
+- `npm run clean:npm` löscht den NPM Ordner
 - `npm run lint` lintet alle JS-Dateien im Projekt auf Grundlage der `.eslintrc.json`
 - `npm run build` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien minifiziert
 - `npm run debug` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien aber nicht minifiziert

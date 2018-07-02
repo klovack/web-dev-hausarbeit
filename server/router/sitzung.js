@@ -6,20 +6,26 @@ const { ObjectID } = require("mongodb");
 
 const { mongoose } = require("../db/mongoose");		// eslint-disable-line
 const { Sitzung } = require("../models/sitzung");
+const queryCheck = require("../middleware/queryCheck");
 
 // Use body parser
 router.use(bodyParser.json());
 
+// If user authorization is to be implemented, each
+//"_benutzer: req.user._id"
+// And line below has to be uncommented
 // router.use(passport.authenticate("jwt", { session: false }));
 
 // Show all sitzung
-router.get("/", (req, res) => {
-	// TODO check the validity of the query
-	const count = req.query.count;
-	const page = req.query.page;
-	const skip = count * page;
+router.get("/", queryCheck, (req, res) => {
+	const count = Number(req.query.count);
+	let page = Number(req.query.page);
+	page = page <= 0 ? 1 : page;
+	const skip = count * (page - 1);
 
-	Sitzung.find({}, null, { skip })
+	Sitzung.find({
+		// _benutzer: req.user._id
+	}, null, { limit: count, skip })
 		.then(sitzungen => {
 			res.send({ sitzungen });			// Send sitzung if found
 		}, error => {
