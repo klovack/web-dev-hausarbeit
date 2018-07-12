@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Connection URL
-const url = "mongodb://localhost:27017/web-dev-hausarbeit";
+const url = "mongodb://webdev2018:abc123@ds263640.mlab.com:63640/webdev2018";
 
 mongoose.Promise = global.Promise;
 mongoose.connect(url);
