@@ -9,8 +9,8 @@
     "bundle:css:min": "npm run bundle:css && cleancss public/css/styles.css -o public/css/styles.css",
     "bundle:js": "browserify client/js/main.js -o public/js/bundle.js",
     "bundle:js:min": "npm run bundle:js && minify public/js/bundle.js --out-file public/js/bundle.js",
-    "clean:npm": "del node_modules || npm run echo:nowarning && rm -rf node_modules",
-		"clean:public": "del public\\* || (npm run echo:nowarning && rm -rf public/*)",
+    "clean:npm": "RMDIR node_modules || (npm run echo:nowarning && rm -rf node_modules)",
+    "clean:public": "(RMDIR public\\css public\\js && del public\\index.html) || (npm run echo:nowarning && rm -rf public/*)",
     "clean": "npm run clean:npm && npm run clean:public",
     "debug": "npm run clean:public && npm run lint && npm run bundle:js && npm run bundle:css && npm run static",
     "lint": "eslint -c ./.eslintrc.json **/*.js",
@@ -29,6 +29,7 @@
     "nodemon": "^1.17.4"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
