@@ -10,7 +10,7 @@
     "bundle:js": "browserify client/js/main.js -o public/js/bundle.js",
     "bundle:js:min": "npm run bundle:js && minify public/js/bundle.js --out-file public/js/bundle.js",
     "clean:npm": "rm -rf node_modules || ( npm run echo:nowarning && rmdir /s node_modules )",
-    "clean:public": "rm -rf public/* || ( npm run echo:nowarning && rmdir /s /q public\\* )",
+    "clean:public": "rm -rf public/* || ( npm run echo:nowarning && rmdir /s /q public\\ )",
     "clean": "npm run clean:npm && npm run clean:public",
     "debug": "npm run clean:public && npm run lint && npm run bundle:js && npm run bundle:css && npm run static",
     "lint": "eslint -c ./.eslintrc.json **/*.js",

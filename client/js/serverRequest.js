@@ -74,15 +74,31 @@ const makeGetIdRequest = function (id) {
 };
 
 const makePatchRequest = function (id) {
-	// TODO verify and validate the input
+	let ort = document.getElementById("ortsname").value;
 
-	// TODO create the object which is going to sent
+	let datumInput = document.getElementById("datum");
+	let datum = moment(datumInput.value);
 
-	// TODO make patch request to server using axios.post
+	let objektDiv = document.getElementById("objects_container");
+	let objektArray = objektDiv.getElementsByTagName("*");
+	let beobachtendeObjekte = [];
 
-	// TODO server will send the response with the created sitzung, show it
+	for (var i = 0; i < objektArray.length; i++) {
+		console.log(objektArray[i].value);
+		beobachtendeObjekte[i] = objektArray[i].value;
+	}
 
-	// TODO catch the error, in case the id is not in the database
+	axios.patch("/sitzungen/" + id, {
+		ort,
+		datum,
+		beobachtendeObjekte
+	}).then(data => {
+		console.log(data);
+	}).catch(err => {
+		console.log(err);
+	});
+
+	makeGetRequest();
 };
 
 const makeDelRequest = function (id) {

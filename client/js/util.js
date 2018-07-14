@@ -1,5 +1,3 @@
-const { makeGetRequest } = require("./serverRequest");
-
 let pageNumber = 1;
 let itemCount = 0;
 
@@ -8,7 +6,7 @@ let itemCount = 0;
 	otherwise it won't call the function
 */
 
-const { makePostRequest, makeGetRequest } = require("./serverRequest");
+const { makePostRequest, makeGetRequest, makePatchRequest } = require("./serverRequest");
 
 const debounce = (func, wait, immediate) => {
 	var timeout;
@@ -27,9 +25,9 @@ const debounce = (func, wait, immediate) => {
 };
 
 const addListenerToControls = () => {
-
 	addListenerToPostRequest();
 	addListenerToPagination();
+	addListenerToPatchRequest();
 };
 
 const addListenerToPagination = () => {
@@ -46,9 +44,15 @@ const addListenerToPagination = () => {
 const addListenerToPostRequest = () => {
 	let postSitzung = document.getElementById("postSitzung");
 	postSitzung.addEventListener("click", function () {
-	makePostRequest();
-});
-}
+		makePostRequest();
+	});
+};
 
+const addListenerToPatchRequest = () => {
+	let patchSitzung = document.getElementById("patchSitzung");
+	patchSitzung.addEventListener("click", function () {
+		makePatchRequest();
+	});
+};
 
 module.exports = { debounce, pageNumber, itemCount, addListenerToControls };
