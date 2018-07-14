@@ -15,6 +15,11 @@ const addListToUl = (sitzung, index, ul) => {
 	return li;
 };
 
+const putInformationInForm = (sitzung) => {
+	let ortsname = document.getElementById("ortsname");
+	ortsname.value = sitzung.ort;
+};
+
 /*
     Sitzung list container divided by 75px (sitzung-item + margin)
 	Return promise which contains number of item data
@@ -26,4 +31,4 @@ const calculateNumOfItem = function () {
 	return Promise.resolve(Math.floor(numOfItem));
 };
 
-module.exports = { addListToUl, calculateNumOfItem };
+module.exports = { addListToUl, calculateNumOfItem, putInformationInForm };

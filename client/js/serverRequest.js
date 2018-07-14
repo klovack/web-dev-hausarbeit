@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const { addListToUl, calculateNumOfItem } = require("./domManipulation");
+const { addListToUl, calculateNumOfItem, putInformationInForm } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen
@@ -20,7 +20,11 @@ const makeGetRequest = function () {
 
 					data.data.sitzungen.forEach((sitzung, index) => {
 						let li = addListToUl(sitzung, index, ul);
-						li.addEventListener("click", makeGetIdRequest(sitzung._id));
+						li.addEventListener("click", function () {
+							makeGetIdRequest(sitzung._id);
+							// Function to put information in form
+							putInformationInForm(sitzung._id);
+						});
 					});
 				})
 				.catch(err => {
