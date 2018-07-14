@@ -3,7 +3,7 @@ const moment = require("moment");
 const addListToUl = (sitzung, index, ul) => {
 	let li = document.createElement("li");
 	li.classList.add("list-item");
-	li.id = `sitzung-${index}`;
+	li.id = sitzung._id;
 	li.innerHTML = `
                 <div>
                     <span>${sitzung.ort}</span>

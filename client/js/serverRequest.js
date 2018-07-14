@@ -27,6 +27,13 @@ const makeGetRequest = function (pageNumber) {
 					data.data.sitzungen.forEach((sitzung, index) => {
 						let li = addListToUl(sitzung, index, ul);
 						li.addEventListener("click", function () {
+							const activeLi = ul.getElementsByClassName("active")[0];
+
+							if (activeLi) {
+								activeLi.classList.remove("active");
+							}
+
+							li.classList.add("active");
 							putInformationInForm(sitzung);
 						});
 					});
@@ -73,7 +80,7 @@ const makeGetIdRequest = function (id) {
 	});
 };
 
-const makePatchRequest = function (id) {
+const makePatchRequest = function () {
 	let ort = document.getElementById("ortsname").value;
 
 	let datumInput = document.getElementById("datum");
@@ -88,17 +95,18 @@ const makePatchRequest = function (id) {
 		beobachtendeObjekte[i] = objektArray[i].value;
 	}
 
-	axios.patch("/sitzungen/" + id, {
+	const activeLi = document.getElementById("sitzung-list").getElementsByClassName("active")[0];
+
+	axios.patch("/sitzungen/" + activeLi.id, {
 		ort,
 		datum,
 		beobachtendeObjekte
 	}).then(data => {
 		console.log(data);
+		makeGetRequest();
 	}).catch(err => {
 		console.log(err);
 	});
-
-	makeGetRequest();
 };
 
 const makeDelRequest = function (id) {
