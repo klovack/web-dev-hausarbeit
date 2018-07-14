@@ -2,6 +2,9 @@
 	Executes the function only after the number of wait times
 	otherwise it won't call the function
 */
+
+const { makePostRequest } = require("./serverRequest");
+
 const debounce = (func, wait, immediate) => {
 	var timeout;
 	return () => {
@@ -18,4 +21,11 @@ const debounce = (func, wait, immediate) => {
 	};
 };
 
-module.exports = { debounce };
+const addListenerToControls = () => {
+	let postSitzung = document.getElementById("postSitzung");
+	postSitzung.addEventListener("click", function () {
+		makePostRequest();
+	});
+};
+
+module.exports = { debounce, addListenerToControls };

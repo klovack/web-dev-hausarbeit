@@ -31,7 +31,6 @@ const putInformationInForm = (sitzung) => {
 		input.id = `objekt-${index}`;
 		input.value = element;
 		div.appendChild(input);
-		console.log("angekommen");
 	});
 
 	// Array anlegen, welches alle Objekte einer Sitzung enthält
@@ -44,7 +43,7 @@ const putInformationInForm = (sitzung) => {
 */
 const calculateNumOfItem = function () {
 	const container = document.getElementById("sitzung-list-container");
-	const numOfItem = container.clientHeight / 100;
+	const numOfItem = container.clientHeight / 75;
 
 	return Promise.resolve(Math.floor(numOfItem));
 };

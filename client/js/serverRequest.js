@@ -1,4 +1,5 @@
 const axios = require("axios");
+const moment = require("moment");
 
 const { addListToUl, calculateNumOfItem, putInformationInForm } = require("./domManipulation");
 
@@ -32,22 +33,39 @@ const makeGetRequest = function () {
 };
 
 const makePostRequest = function () {
-	// TODO verify and validate the input
+	let ort = document.getElementById("ortsname").value;
 
-	// TODO make post request to server using axios.post
+	let datumInput = document.getElementById("datum");
+	let datum = moment(datumInput.value);
 
-	// TODO server will send the response with the created sitzung, show it
+	let objektDiv = document.getElementById("objects_container");
+	let objektArray = objektDiv.getElementsByTagName("*");
+	let beobachtendeObjekte = [];
+
+	for (var i = 0; i < objektArray.length; i++) {
+		console.log(objektArray[i].value);
+		beobachtendeObjekte[i] = objektArray[i].value;
+	}
+
+	axios.post("/sitzungen", {
+		ort,
+		datum,
+		beobachtendeObjekte
+	}).then(data => {
+		console.log(data);
+	}).catch(err => {
+		console.log(err);
+	});
+
+	makeGetRequest();
 };
 
 const makeGetIdRequest = function (id) {
-	// TODO call axios.get with the id as the parameter
 	axios.get("/sitzungen/" + id).then(data => {
 		console.log(data);
+	}).catch(err => {
+		console.log(err);
 	});
-
-	// TODO show the data which server responded with
-
-	// TODO catch the error, in case the id is not in the database
 };
 
 const makePatchRequest = function (id) {
@@ -63,11 +81,12 @@ const makePatchRequest = function (id) {
 };
 
 const makeDelRequest = function (id) {
-	// TODO make del request axios.delete with the id as the parameter
-
-	// TODO show the data which server responded with
-
-	// TODO catch the error, in case the id is not in the database
+	axios.delete("/sitzungen/" + id).then(data => {
+		console.log(data);
+	}).catch(err => {
+		console.log(err);
+	});
+	makeGetRequest();
 };
 
 module.exports = { makeGetRequest, makePostRequest, makeGetIdRequest, makeDelRequest, makePatchRequest };
