@@ -1,5 +1,3 @@
-const { makeGetRequest } = require("./serverRequest");
-
 let pageNumber = 1;
 let itemCount = 0;
 
@@ -27,7 +25,6 @@ const debounce = (func, wait, immediate) => {
 };
 
 const addListenerToControls = () => {
-
 	addListenerToPostRequest();
 	addListenerToPagination();
 };
@@ -46,9 +43,8 @@ const addListenerToPagination = () => {
 const addListenerToPostRequest = () => {
 	let postSitzung = document.getElementById("postSitzung");
 	postSitzung.addEventListener("click", function () {
-	makePostRequest();
-});
-}
-
+		makePostRequest();
+	});
+};
 
 module.exports = { debounce, pageNumber, itemCount, addListenerToControls };
