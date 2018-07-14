@@ -1,3 +1,6 @@
+let pageNumber = 1;
+let itemCount = 0;
+
 /*
 	Executes the function only after the number of wait times
 	otherwise it won't call the function
@@ -18,4 +21,4 @@ const debounce = (func, wait, immediate) => {
 	};
 };
 
-module.exports = { debounce };
+module.exports = { debounce, pageNumber, itemCount };

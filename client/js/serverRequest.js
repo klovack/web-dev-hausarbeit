@@ -1,22 +1,27 @@
 const axios = require("axios");
 
-const { addListToUl, calculateNumOfItem, putInformationInForm } = require("./domManipulation");
+let { itemCount } = require("./util");
+const { addListToUl, calculateNumOfItem, putInformationInForm, calculatePagination } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen
     by calculating the number of item needed to fit the window screen
     And then fetch the data from the server
 */
-const makeGetRequest = function () {
+const makeGetRequest = function (pageNumber) {
 	calculateNumOfItem()
 		.then(numOfItems => {
-			console.log(numOfItems);
-			axios.get(`/sitzungen?json=true&count=${numOfItems}`)
+			axios.get(`/sitzungen?json=true&count=${numOfItems}&page=${pageNumber}`)
 				.then(data => {
 					let ul = document.getElementById("sitzung-list");
 					while (ul.hasChildNodes()) {
 						ul.removeChild(ul.lastChild);
 					}
+
+					pageNumber = data.data.pageNumber;
+					itemCount = data.data.itemCount;
+
+					calculatePagination(itemCount, pageNumber, numOfItems);
 
 					data.data.sitzungen.forEach((sitzung, index) => {
 						let li = addListToUl(sitzung, index, ul);

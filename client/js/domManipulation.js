@@ -49,4 +49,42 @@ const calculateNumOfItem = function () {
 	return Promise.resolve(Math.floor(numOfItem));
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInForm };
+const calculatePagination = function (itemCount, pageNumber, numOfItems) {
+	const numOfPages = Math.ceil(itemCount / numOfItems);
+	if (pageNumber < numOfPages) {
+		showNextArrow();
+	}
+	if (pageNumber > 1) {
+		showPrevArrow();
+	}
+	if (pageNumber === numOfPages) {
+		// Hide the next arrow
+		hideNextArrow();
+	}
+	if (pageNumber === 1) {
+		// Hide the back arrow
+		hidePrevArrow();
+	}
+	else if (pageNumber < 1 || pageNumber > numOfPages) {
+		// Set the page to 1
+		pageNumber = 1;
+	}
+};
+
+const hideNextArrow = function () {
+	document.getElementById("arrow-next").classList.add("hide");
+};
+
+const showNextArrow = function () {
+	document.getElementById("arrow-next").classList.remove("hide");
+};
+
+const hidePrevArrow = function () {
+	document.getElementById("arrow-previous").classList.add("hide");
+};
+
+const showPrevArrow = function () {
+	document.getElementById("arrow-previous").classList.remove("hide");
+};
+
+module.exports = { addListToUl, calculateNumOfItem, putInformationInForm, calculatePagination };
