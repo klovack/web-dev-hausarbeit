@@ -1,9 +1,14 @@
+const { makeGetRequest } = require("./serverRequest");
+
+let pageNumber = 1;
+let itemCount = 0;
+
 /*
 	Executes the function only after the number of wait times
 	otherwise it won't call the function
 */
 
-const { makePostRequest } = require("./serverRequest");
+const { makePostRequest, makeGetRequest } = require("./serverRequest");
 
 const debounce = (func, wait, immediate) => {
 	var timeout;
@@ -22,10 +27,28 @@ const debounce = (func, wait, immediate) => {
 };
 
 const addListenerToControls = () => {
-	let postSitzung = document.getElementById("postSitzung");
-	postSitzung.addEventListener("click", function () {
-		makePostRequest();
+
+	addListenerToPostRequest();
+	addListenerToPagination();
+};
+
+const addListenerToPagination = () => {
+	document.getElementById("arrow-next").addEventListener("click", function () {
+		pageNumber++;
+		makeGetRequest(pageNumber);
+	});
+	document.getElementById("arrow-previous").addEventListener("click", function () {
+		pageNumber--;
+		makeGetRequest(pageNumber);
 	});
 };
 
-module.exports = { debounce, addListenerToControls };
+const addListenerToPostRequest = () => {
+	let postSitzung = document.getElementById("postSitzung");
+	postSitzung.addEventListener("click", function () {
+	makePostRequest();
+});
+}
+
+
+module.exports = { debounce, pageNumber, itemCount, addListenerToControls };

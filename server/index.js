@@ -39,6 +39,10 @@ app.use("/sitzungen", sitzungRoute);
 // User Router
 app.use("/users", userRoute);
 
+app.get("/*", (req, res) => {
+	res.redirect("/");
+});
+
 app.listen(PORT, () => {
 	console.log(`Server is listening on port ${PORT}`);
 });

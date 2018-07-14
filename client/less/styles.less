@@ -32,6 +32,10 @@ ul {
     list-style-type: none;
 }
 
+.hide {
+    display: none;
+}
+
 // -------------------------------------------------------------
 
 // Header
@@ -72,6 +76,16 @@ ul {
 // -------------------------------------------------------------
 
 // Content
+
+    #arrow-next {
+        position: absolute;
+        right: 0;
+    }
+
+    #arrow-previous {
+        position: absolute;
+        left: 0;
+    }
 
     @media screen and (max-width: 375px) {
         main {
@@ -248,6 +262,7 @@ ul {
         height: 10%;
         align-items: center;
         justify-content: space-between;
+        position: relative;
     }
 
     .aside-footer-container div {
