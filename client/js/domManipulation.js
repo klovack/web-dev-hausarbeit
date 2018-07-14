@@ -12,6 +12,7 @@ const addListToUl = (sitzung, index, ul) => {
                 <span>${moment(sitzung.datum).format("DD.MM.YYYY")}</span>
             `;
 	ul.appendChild(li);
+	return li;
 };
 
 /*
@@ -20,7 +21,7 @@ const addListToUl = (sitzung, index, ul) => {
 */
 const calculateNumOfItem = function () {
 	const container = document.getElementById("sitzung-list-container");
-	const numOfItem = container.clientHeight / 75;
+	const numOfItem = container.clientHeight / 100;
 
 	return Promise.resolve(Math.floor(numOfItem));
 };
