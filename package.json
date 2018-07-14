@@ -9,14 +9,14 @@
     "bundle:css:min": "npm run bundle:css && cleancss public/css/styles.css -o public/css/styles.css",
     "bundle:js": "browserify client/js/main.js -o public/js/bundle.js",
     "bundle:js:min": "npm run bundle:js && minify public/js/bundle.js --out-file public/js/bundle.js",
-    "clean:npm": "rmdir /s node_modules || (npm run echo:nowarning && rm -rf node_modules)",
-    "clean:public": "(rmdir /s /q public\\) || (npm run echo:nowarning && rm -rf public/*)",
+    "clean:npm": "rm -rf node_modules || ( npm run echo:nowarning && rmdir /s node_modules )",
+    "clean:public": "rm -rf public/* || ( npm run echo:nowarning && rmdir /s /q public\\ )",
     "clean": "npm run clean:npm && npm run clean:public",
     "debug": "npm run clean:public && npm run lint && npm run bundle:js && npm run bundle:css && npm run static",
     "lint": "eslint -c ./.eslintrc.json **/*.js",
     "start": "node server/index.js",
     "static": "copy client\\index.html public\\ || (cp client/index.html public/index.html)",
-    "echo:nowarning": "echo \"Ignore Command not found warning. That's for deleting file in Windows\""
+    "echo:nowarning": "echo \"Ignore Command not found warning. That's for deleting file in another OS\""
   },
   "author": "Muhammad Fikriansyah und Jeremy Koch",
   "license": "ISC",
