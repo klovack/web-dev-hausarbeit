@@ -27,7 +27,9 @@ router.get("/", queryCheck, (req, res) => {
 		// _benutzer: req.user._id
 	}, null, { limit: count, skip })
 		.then(sitzungen => {
-			res.send({ sitzungen });			// Send sitzung if found
+			Sitzung.count().then(count => {
+				res.send({ sitzungen, count });			// Send sitzung if found
+			});
 		}, error => {
 			res.status(400).send(error);		// Send error if there's database error
 		})

@@ -18,6 +18,8 @@ const makeGetRequest = function () {
 						ul.removeChild(ul.lastChild);
 					}
 
+					console.log(data.data);
+
 					data.data.sitzungen.forEach((sitzung, index) => {
 						addListToUl(sitzung, index, ul);
 					});
