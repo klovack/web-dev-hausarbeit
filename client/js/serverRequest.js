@@ -18,10 +18,9 @@ const makeGetRequest = function () {
 						ul.removeChild(ul.lastChild);
 					}
 
-					console.log(data.data);
-
 					data.data.sitzungen.forEach((sitzung, index) => {
-						addListToUl(sitzung, index, ul);
+						let li = addListToUl(sitzung, index, ul);
+						li.addEventListener("click", makeGetIdRequest(sitzung._id));
 					});
 				})
 				.catch(err => {
@@ -40,6 +39,9 @@ const makePostRequest = function () {
 
 const makeGetIdRequest = function (id) {
 	// TODO call axios.get with the id as the parameter
+	axios.get("/sitzungen/" + id).then(data => {
+		console.log(data);
+	});
 
 	// TODO show the data which server responded with
 
@@ -66,4 +68,4 @@ const makeDelRequest = function (id) {
 	// TODO catch the error, in case the id is not in the database
 };
 
-module.exports = { makeGetRequest, makePostRequest, makeGetIdRequest };
+module.exports = { makeGetRequest, makePostRequest, makeGetIdRequest, makeDelRequest, makePatchRequest };
