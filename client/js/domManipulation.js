@@ -18,6 +18,24 @@ const addListToUl = (sitzung, index, ul) => {
 const putInformationInForm = (sitzung) => {
 	let ortsname = document.getElementById("ortsname");
 	ortsname.value = sitzung.ort;
+	let datum = document.getElementById("datum");
+	datum.value = moment(sitzung.datum).format("YYYY-MM-DD");
+
+	let objektArray = sitzung.beobachtendeObjekte;
+	let div = document.getElementById("objects_container");
+	while (div.hasChildNodes()) {
+		div.removeChild(div.lastChild);
+	}
+	objektArray.forEach((element, index) => {
+		let input = document.createElement("input");
+		input.id = `objekt-${index}`;
+		input.value = element;
+		div.appendChild(input);
+		console.log("angekommen");
+	});
+
+	// Array anlegen, welches alle Objekte einer Sitzung enthält
+	// Schleife die so viele inputs anlegt, wie im Array Objekte sind und direkt füllen
 };
 
 /*

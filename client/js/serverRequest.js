@@ -21,9 +21,7 @@ const makeGetRequest = function () {
 					data.data.sitzungen.forEach((sitzung, index) => {
 						let li = addListToUl(sitzung, index, ul);
 						li.addEventListener("click", function () {
-							makeGetIdRequest(sitzung._id);
-							// Function to put information in form
-							putInformationInForm(sitzung._id);
+							putInformationInForm(sitzung);
 						});
 					});
 				})
