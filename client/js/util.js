@@ -1,3 +1,5 @@
+const { makeGetRequest } = require("./serverRequest");
+
 let pageNumber = 1;
 let itemCount = 0;
 
@@ -21,4 +23,15 @@ const debounce = (func, wait, immediate) => {
 	};
 };
 
-module.exports = { debounce, pageNumber, itemCount };
+const addListenerToPagination = () => {
+	document.getElementById("arrow-next").addEventListener("click", function () {
+		pageNumber++;
+		makeGetRequest(pageNumber);
+	});
+	document.getElementById("arrow-previous").addEventListener("click", function () {
+		pageNumber--;
+		makeGetRequest(pageNumber);
+	});
+};
+
+module.exports = { debounce, pageNumber, itemCount, addListenerToPagination };
