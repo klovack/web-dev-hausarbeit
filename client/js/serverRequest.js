@@ -28,5 +28,40 @@ const makeGetRequest = function () {
 		});
 };
 
-module.exports = { makeGetRequest }
-;
+const makePostRequest = function () {
+	// TODO verify and validate the input
+
+	// TODO make post request to server using axios.post
+
+	// TODO server will send the response with the created sitzung, show it
+};
+
+const makeGetIdRequest = function (id) {
+	// TODO call axios.get with the id as the parameter
+
+	// TODO show the data which server responded with
+
+	// TODO catch the error, in case the id is not in the database
+};
+
+const makePatchRequest = function (id) {
+	// TODO verify and validate the input
+
+	// TODO create the object which is going to sent
+
+	// TODO make patch request to server using axios.post
+
+	// TODO server will send the response with the created sitzung, show it
+
+	// TODO catch the error, in case the id is not in the database
+};
+
+const makeDelRequest = function (id) {
+	// TODO make del request axios.delete with the id as the parameter
+
+	// TODO show the data which server responded with
+
+	// TODO catch the error, in case the id is not in the database
+};
+
+module.exports = { makeGetRequest, makePostRequest, makeGetIdRequest };
