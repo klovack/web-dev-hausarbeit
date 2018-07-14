@@ -3,14 +3,13 @@ const moment = require("moment");
 const addListToUl = (sitzung, index, ul) => {
 	let li = document.createElement("li");
 	li.classList.add("list-item");
+	li.id = `sitzung-${index}`;
 	li.innerHTML = `
-            <div id="sitzung-${index}">
                 <div>
                     <span>${sitzung.ort}</span>
                     <a target="_blank" href="https://maps.google.com/?q=${sitzung.ort}"><i class="material-icons md-18">place</i></a>
                 </div>
                 <span>${moment(sitzung.datum).format("DD.MM.YYYY")}</span>
-            </div>
             `;
 	ul.appendChild(li);
 };
