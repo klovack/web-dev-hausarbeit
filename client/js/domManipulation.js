@@ -126,10 +126,10 @@ const showPrevArrow = function () {
 const setLoadingAnim = function (isLoading) {
 	let loadingSpinner = document.getElementById("spinner-loader");
 	if (isLoading) {
-		loadingSpinner.classList.add("active");
+		loadingSpinner.classList.add("onload");
 	}
 	else {
-		loadingSpinner.classList.remove("active");
+		loadingSpinner.classList.remove("onload");
 	}
 };
 
