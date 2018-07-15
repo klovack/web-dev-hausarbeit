@@ -125,13 +125,12 @@ const makePatchRequest = function (evt) {
 		ort,
 		datum,
 		beobachtendeObjekte
-	}).then(data => {
+	}).then(() => {
 		makeGetRequest().then(() => {
 			// For some reason it doesn't work so for now just clear the input
 			//setTheLiToActive(data.data.sitzung._id);
 			//putInformationInFormDetail(data.data.sitzung);
 			clearSitzungInfo();
-			activeLi.classList.remove("active");
 		});
 		//location.reload();
 	}).catch(err => {

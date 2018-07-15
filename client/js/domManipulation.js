@@ -156,11 +156,6 @@ const setListenerOnCancel = function () {
 	cancel.addEventListener("click", function () {
 		//location.reload();
 		clearSitzungInfo();
-		let activeLi = document.getElementsByClassName("active")[0];
-
-		if (activeLi) {
-			activeLi.classList.remove("active");
-		}
 	});
 };
 
@@ -257,6 +252,28 @@ const clearSitzungInfo = function () {
 	while (objectsContainer.hasChildNodes()) {
 		objectsContainer.removeChild(objectsContainer.lastChild);
 	}
+
+	setToDefaultButtons();
+};
+
+const setToDefaultButtons = function () {
+	let activeLi = document.getElementsByClassName("active")[0];
+
+	if (activeLi) {
+		activeLi.classList.remove("active");
+	}
+
+	let post = document.getElementById("postSitzung");
+	post.style.display = "inline-block";
+
+	let patch = document.getElementById("patchSitzung");
+	patch.style.display = "none";
+
+	let edit = document.getElementById("edit");
+	edit.style.display = "none";
+
+	let cancel = document.getElementById("cancel");
+	cancel.style.display = "none";
 };
 
 const setTheLiToActive = function (id) {
