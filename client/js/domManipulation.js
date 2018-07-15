@@ -36,6 +36,9 @@ const putInformationInFormDetail = (sitzung) => {
 		post.style.display = "none";
 	}
 
+	let createNew = document.getElementById("createNew");
+	createNew.style.display = "none";
+
 	let cancel = document.getElementById("cancel");
 	if (cancel.style.display === "none") {
 		cancel.style.display = "inline-block";
@@ -95,6 +98,9 @@ const putInformationInFormPatch = (sitzung) => {
 		post.style.display = "none";
 	}
 
+	let createNew = document.getElementById("createNew");
+	createNew.style.display = "none";
+
 	let cancel = document.getElementById("cancel");
 	if (cancel.style.display === "none") {
 		cancel.style.display = "inline-block";
@@ -137,10 +143,12 @@ const setListenerOnIc = function () {
 	let div = document.getElementById("objects_container");
 	for (let i = 0; i < div.children.length; i++) {
 		let ic = document.getElementById("ic-" + i);
-		ic.addEventListener("click", function () {
-			deleteObject(i);
-		});
-		ic.style.cursor = "pointer";
+		if (i === div.children.length - 1) {
+			ic.addEventListener("click", function () {
+				deleteObject(i);
+			});
+			ic.style.cursor = "pointer";
+		}
 	}
 };
 
@@ -162,7 +170,10 @@ const setListenerOnCancel = function () {
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
+	console.log(del);
 	div.removeChild(del);
+	del.remove();
+	console.log(del);
 };
 
 const addObject = function () {
@@ -263,8 +274,11 @@ const setToDefaultButtons = function () {
 		activeLi.classList.remove("active");
 	}
 
+	let createNew = document.getElementById("createNew");
+	createNew.style.display = "inline-block";
+
 	let post = document.getElementById("postSitzung");
-	post.style.display = "inline-block";
+	post.style.display = "none";
 
 	let patch = document.getElementById("patchSitzung");
 	patch.style.display = "none";

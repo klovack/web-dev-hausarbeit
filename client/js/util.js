@@ -29,6 +29,7 @@ const addListenerToControls = () => {
 	addListenerToPostRequest();
 	addListenerToPagination();
 	addListenerToPatchRequest();
+	addListenerToCreateNewButton();
 };
 
 const addListenerToPagination = () => {
@@ -55,6 +56,14 @@ const addListenerToPatchRequest = () => {
 	let patchSitzung = document.getElementById("patchSitzung");
 	patchSitzung.addEventListener("click", function () {
 		makePatchRequest();
+	});
+};
+
+const addListenerToCreateNewButton = () => {
+	let createNew = document.getElementById("createNew");
+	createNew.addEventListener("click", function () {
+		// Here display the empty field
+		console.log("Display empty form");
 	});
 };
 

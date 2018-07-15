@@ -24,6 +24,7 @@ const makeGetRequest = function (pageNumber) {
 					let ul = document.getElementById("sitzung-list");
 					while (ul.hasChildNodes()) {
 						ul.removeChild(ul.lastChild);
+						//ul.lastChild.remove();
 					}
 
 					pageNumber = data.data.pageNumber;
