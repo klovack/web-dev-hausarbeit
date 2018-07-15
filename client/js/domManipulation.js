@@ -43,6 +43,10 @@ const showDetailed = function () {
 	if (sitzungDetail.style.display === "none") {
 		sitzungDetail.style.display = "block";
 	}
+	let edit = document.getElementById("edit");
+	if (edit.style.display === "none") {
+		edit.style.display = "inline-block";
+	}
 };
 
 const hideSections = function () {
@@ -57,6 +61,10 @@ const hideSections = function () {
 	let sitzungPost = document.getElementById("sitzungPost");
 	if (sitzungPost.style.display !== "none") {
 		sitzungPost.style.display = "none";
+	}
+	let edit = document.getElementById("edit");
+	if (edit.style.display !== "none") {
+		edit.style.display = "none";
 	}
 };
 
