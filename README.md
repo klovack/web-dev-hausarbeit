@@ -8,7 +8,7 @@ Die Clientseitige Anwendung (Public) kann an der Serverseitige Anwendung (Server
 Hier wird zurzeit nur Backend implementiert.
 
 ### Version
-0.6.0
+1.0.1
 
 ## Anwendung
 ```
@@ -55,4 +55,4 @@ DELETE /sitzungen/:id
 - `npm run lint` lintet alle JS-Dateien im Projekt auf Grundlage der `.eslintrc.json`
 - `npm run build` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien minifiziert
 - `npm run debug` erzeugt das gesamte Projekt, dabei CSS- und JS-Dateien aber nicht minifiziert
-- `npm run start` oder `npm start` startet den HTTP-Server an Port 8080 oder `npm run start --port=[Portnummer]` um den HTTP-Server Port zu spezifieren. Stellen Sie sicher, dass MongoDB schon im Hintergrund ausgeführt wird. Aufgrund der unterschiedlichen Installationen von MongoDB kann MongoDB als npm-build-prozess nicht ausgeführt werden.
+- `npm run start` oder `npm start` startet den HTTP-Server an Port 8080 oder `npm run start --port=[Portnummer]` um den HTTP-Server Port zu spezifieren.
