@@ -15,7 +15,7 @@ const addListToUl = (sitzung, index, ul) => {
 	return li;
 };
 
-const putInformationInForm = (sitzung) => {
+const putInformationInFormDetail = (sitzung) => {
 	hideSections();
 	showDetailed();
 
@@ -33,6 +33,7 @@ const putInformationInForm = (sitzung) => {
 		let input = document.createElement("input");
 		input.id = `objekt-${index}`;
 		input.value = element;
+		input.disabled = true;
 		div.appendChild(input);
 	});
 };
@@ -108,4 +109,4 @@ const showPrevArrow = function () {
 	document.getElementById("arrow-previous").classList.remove("hide");
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInForm, calculatePagination };
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination };

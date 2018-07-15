@@ -64,12 +64,19 @@
 
                     <div id="sitzungDetail" style="display: none;">
                         <form>
-                            <label for="ortsname_detail">Ortsname</label>
-                            <input type="text" name="ortsname" id="ortsname_detail">
-                            <label for="datum_detail">Geplantes Datum</label>
-                            <input type="date" name="datum" id="datum_detail">
-                            <div id="objects_container_detail">
-                                <input type="text">
+                            <div>
+                                <label for="ortsname_detail">Ortsname</label>
+                                <input type="text" name="ortsname" id="ortsname_detail" disabled>
+                            </div>
+                            <div>
+                                <label for="datum_detail">Geplantes Datum</label>
+                                <input type="date" name="datum" id="datum_detail" disabled>
+                            </div>
+                            <div class="object_overflow">
+                                <label for="objects_container_detail">Gesichtete Objekte</label>
+                                <div id="objects_container_detail">
+                                    <input type="text" disabled>
+                                </div>
                             </div>
                         </form>
                     </div>
