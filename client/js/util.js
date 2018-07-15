@@ -6,6 +6,7 @@ let itemCount = 0;
 	otherwise it won't call the function
 */
 
+const { clearSitzungInfo } = require("./domManipulation");
 const { makePostRequest, makeGetRequest, makePatchRequest } = require("./serverRequest");
 
 const debounce = (func, wait, immediate) => {
@@ -33,10 +34,12 @@ const addListenerToControls = () => {
 const addListenerToPagination = () => {
 	document.getElementById("arrow-next").addEventListener("click", function () {
 		pageNumber++;
+		clearSitzungInfo();
 		makeGetRequest(pageNumber);
 	});
 	document.getElementById("arrow-previous").addEventListener("click", function () {
 		pageNumber--;
+		clearSitzungInfo();
 		makeGetRequest(pageNumber);
 	});
 };

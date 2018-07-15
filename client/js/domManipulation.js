@@ -67,7 +67,7 @@ const putInformationInFormDetail = (sitzung) => {
 	});
 	if (!div.hasChildNodes()) {
 		let input = document.createElement("input");
-		input.value = "Keine Objekte gesichtet";
+		input.placeholder = "Keine Objekte gesichtet";
 		input.disabled = true;
 		div.appendChild(input);
 	}
@@ -149,6 +149,17 @@ const setListenerOnAdd = function () {
 	});
 };
 
+<<<<<<< HEAD
+=======
+const setListenerOnCancel = function () {
+	let cancel = document.getElementById("cancel");
+	cancel.addEventListener("click", function () {
+		//location.reload();
+		clearSitzungInfo();
+	});
+};
+
+>>>>>>> fefef005e63b8b11640fc0619f7d1310710ae30b
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
@@ -230,4 +241,48 @@ const setLoadingAnim = function (isLoading) {
 	}
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim };
+const clearSitzungInfo = function () {
+	let ortsnameInput = document.getElementById("ortsname");
+	let datumInput = document.getElementById("datum");
+	let objectsContainer = document.getElementById("objects_container");
+	let sitzungInfo = document.getElementById("sitzungInfo");
+
+	sitzungInfo.style.display = "none";
+
+	ortsnameInput.value = "";
+	datumInput.value = "";
+	while (objectsContainer.hasChildNodes()) {
+		objectsContainer.removeChild(objectsContainer.lastChild);
+	}
+
+	setToDefaultButtons();
+};
+
+const setToDefaultButtons = function () {
+	let activeLi = document.getElementsByClassName("active")[0];
+
+	if (activeLi) {
+		activeLi.classList.remove("active");
+	}
+
+	let post = document.getElementById("postSitzung");
+	post.style.display = "inline-block";
+
+	let patch = document.getElementById("patchSitzung");
+	patch.style.display = "none";
+
+	let edit = document.getElementById("edit");
+	edit.style.display = "none";
+
+	let cancel = document.getElementById("cancel");
+	cancel.style.display = "none";
+};
+
+const setTheLiToActive = function (id) {
+	let li = document.getElementById(id);
+	if (li) {
+		li.classList.add("active");
+	}
+};
+
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim, clearSitzungInfo, setTheLiToActive };
