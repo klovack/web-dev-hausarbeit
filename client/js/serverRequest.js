@@ -8,7 +8,7 @@ const { addListToUl,
 	putInformationInFormPatch,
 	calculatePagination,
 	setLoadingAnim,
-	setTheLiToActive } = require("./domManipulation");
+	clearSitzungInfo } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen
@@ -127,9 +127,12 @@ const makePatchRequest = function (evt) {
 		beobachtendeObjekte
 	}).then(data => {
 		makeGetRequest().then(() => {
-			setTheLiToActive(data.data.sitzung._id);
+			// For some reason it doesn't work so for now just clear the input
+			//setTheLiToActive(data.data.sitzung._id);
+			//putInformationInFormDetail(data.data.sitzung);
+			clearSitzungInfo();
+			activeLi.classList.remove("active");
 		});
-		putInformationInFormDetail(data.data.sitzung);
 		//location.reload();
 	}).catch(err => {
 		console.log(err);

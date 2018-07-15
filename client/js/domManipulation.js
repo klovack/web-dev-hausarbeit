@@ -154,7 +154,13 @@ const setListenerOnAdd = function () {
 const setListenerOnCancel = function () {
 	let cancel = document.getElementById("cancel");
 	cancel.addEventListener("click", function () {
-		location.reload();
+		//location.reload();
+		clearSitzungInfo();
+		let activeLi = document.getElementsByClassName("active")[0];
+
+		if (activeLi) {
+			activeLi.classList.remove("active");
+		}
 	});
 };
 
