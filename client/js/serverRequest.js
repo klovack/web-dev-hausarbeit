@@ -134,7 +134,7 @@ const makePatchRequest = function (evt) {
 	});
 };
 
-const makeDelRequest = function (id) {
+const makeDelRequest = function () {
 	const activeLi = document.getElementById("sitzung-list").getElementsByClassName("active")[0];
 
 	axios.delete("/sitzungen/" + activeLi.id).then(data => {

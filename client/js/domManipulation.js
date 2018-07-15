@@ -263,6 +263,12 @@ const calculatePagination = function (itemCount, pageNumber, numOfItems) {
 		// Set the page to 1
 		pageNumber = 1;
 	}
+
+	showPageNumber(pageNumber);
+};
+
+const showPageNumber = function (pageNumber) {
+	document.getElementById("seite-index").innerHTML = pageNumber;
 };
 
 const hideNextArrow = function () {
@@ -283,11 +289,14 @@ const showPrevArrow = function () {
 
 const setLoadingAnim = function (isLoading) {
 	let loadingSpinner = document.getElementById("spinner-loader");
+	let pageNumberLabel = document.getElementById("seite-index");
 	if (isLoading) {
 		loadingSpinner.classList.add("onload");
+		pageNumberLabel.style.display = "none";
 	}
 	else {
 		loadingSpinner.classList.remove("onload");
+		pageNumberLabel.style.display = "block";
 	}
 };
 
