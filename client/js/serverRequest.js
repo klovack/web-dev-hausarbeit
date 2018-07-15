@@ -2,7 +2,7 @@ const axios = require("axios");
 const moment = require("moment");
 
 let { itemCount } = require("./util");
-const { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination } = require("./domManipulation");
+const { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen

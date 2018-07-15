@@ -83,12 +83,18 @@
 
                     <div id="sitzungPatch" style="display: none;">
                         <form>
-                            <label for="ortsname_patch">Ortsname</label>
-                            <input type="text" name="ortsname" id="ortsname_patch">
-                            <label for="datum">Geplantes Datum</label>
-                            <input type="date" name="datum" id="datum_patch">
-                            <div id="objects_container_patch">
-                                <input type="text">
+                            <div>
+                                <label for="ortsname_patch">Ortsname</label>
+                                <input type="text" name="ortsname" id="ortsname_patch">
+                            </div>
+                            <div>
+                                <label for="datum">Geplantes Datum</label>
+                                <input type="date" name="datum" id="datum_patch">
+                            </div>
+                            <div class="object_overflow">
+                                <div id="objects_container_patch">
+                                        <input type="text">
+                                </div>
                             </div>
                             <button id="patchSitzung">Patch Sitzung</button>
                         </form>
