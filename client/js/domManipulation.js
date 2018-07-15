@@ -31,6 +31,16 @@ const putInformationInFormDetail = (sitzung) => {
 		patch.style.display = "none";
 	}
 
+	let post = document.getElementById("postSitzung");
+	if (post.style.display !== "none") {
+		post.style.display = "none";
+	}
+
+	let cancel = document.getElementById("cancel");
+	if (cancel.style.display === "none") {
+		cancel.style.display = "inline-block";
+	}
+
 	let add = document.getElementById("add");
 	if (add.style.display !== "none") {
 		add.style.display = "none";
@@ -61,6 +71,7 @@ const putInformationInFormDetail = (sitzung) => {
 		input.disabled = true;
 		div.appendChild(input);
 	}
+	setListenerOnCancel();
 };
 
 const putInformationInFormPatch = (sitzung) => {
@@ -76,7 +87,17 @@ const putInformationInFormPatch = (sitzung) => {
 
 	let patchic = document.getElementById("patchSitzung");
 	if (patchic.style.display === "none") {
-		patchic.style.display = "block";
+		patchic.style.display = "inline-block";
+	}
+
+	let post = document.getElementById("postSitzung");
+	if (post.style.display !== "none") {
+		post.style.display = "none";
+	}
+
+	let cancel = document.getElementById("cancel");
+	if (cancel.style.display === "none") {
+		cancel.style.display = "inline-block";
 	}
 
 	let add = document.getElementById("add");
@@ -109,6 +130,7 @@ const putInformationInFormPatch = (sitzung) => {
 	});
 	setListenerOnIc();
 	setListenerOnAdd();
+	setListenerOnCancel();
 };
 
 const setListenerOnIc = function () {
@@ -126,6 +148,13 @@ const setListenerOnAdd = function () {
 	let add = document.getElementById("add");
 	add.addEventListener("click", function () {
 		addObject();
+	});
+};
+
+const setListenerOnCancel = function () {
+	let cancel = document.getElementById("cancel");
+	cancel.addEventListener("click", function () {
+		location.reload();
 	});
 };
 
