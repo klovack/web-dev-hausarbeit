@@ -94,12 +94,11 @@ const makePatchRequest = function () {
 	let datum = moment(datumInput.value);
 
 	let objektDiv = document.getElementById("objects_container");
-	let objektArray = objektDiv.getElementsByTagName("*");
+	let inputs = objektDiv.getElementsByTagName("input");
 	let beobachtendeObjekte = [];
 
-	for (var i = 0; i < objektArray.length; i++) {
-		console.log(objektArray[i].value);
-		beobachtendeObjekte[i] = objektArray[i].value;
+	for (var i = 0; i < inputs.length; i++) {
+		beobachtendeObjekte[i] = inputs[i].value;
 	}
 
 	const activeLi = document.getElementById("sitzung-list").getElementsByClassName("active")[0];

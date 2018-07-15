@@ -77,12 +77,34 @@ const putInformationInFormPatch = (sitzung) => {
 		div.removeChild(div.lastChild);
 	}
 	objektArray.forEach((element, index) => {
-		let input = document.createElement("input");
-		input.id = `objekt-${index}`;
-		input.value = element;
-		input.disabled = false;
-		div.appendChild(input);
+		let innDiv = document.createElement("div");
+		innDiv.id = "innDiv-" + index;
+		innDiv.innerHTML = `
+						<input type="text" id="objekt-${index}" value="${element}" style="display: inline-block;">
+						<i class="material-icons md-24" id="ic-${index}">delete</i>
+						`;
+		innDiv.style.display = "flex";
+		innDiv.style.alignItems = "center";
+		div.appendChild(innDiv);
 	});
+	setListenerOnIc();
+};
+
+const setListenerOnIc = function () {
+	let div = document.getElementById("objects_container");
+	console.log("huhu");
+	for (let i = 0; i < div.children.length; i++) {
+		let ic = document.getElementById("ic-" + i);
+		ic.addEventListener("click", function () {
+			deleteObject(i);
+		});
+	}
+};
+
+const deleteObject = function (index) {
+	let div = document.getElementById("objects_container");
+	let del = document.getElementById("innDiv-" + index);
+	div.removeChild(del);
 };
 
 /*
