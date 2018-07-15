@@ -7,7 +7,7 @@ let itemCount = 0;
 */
 
 const { clearSitzungInfo, addObject, putInformationInFormPost } = require("./domManipulation");
-const { makePostRequest, makeGetRequest, makePatchRequest } = require("./serverRequest");
+const { makePostRequest, makeGetRequest, makePatchRequest, makeDelRequest } = require("./serverRequest");
 
 const debounce = (func, wait, immediate) => {
 	var timeout;
@@ -32,6 +32,7 @@ const addListenerToControls = () => {
 	addListenerToCreateNewButton();
 	addListenerToCreateCancelButton();
 	addListenerToAddButton();
+	addListenerToDelete();
 };
 
 const addListenerToPagination = () => {
@@ -58,6 +59,13 @@ const addListenerToPatchRequest = () => {
 	let patchSitzung = document.getElementById("patchSitzung");
 	patchSitzung.addEventListener("click", function () {
 		makePatchRequest();
+	});
+};
+
+const addListenerToDelete = () => {
+	let del = document.getElementById("delete");
+	del.addEventListener("click", function () {
+		makeDelRequest();
 	});
 };
 

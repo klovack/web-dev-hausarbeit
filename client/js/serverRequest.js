@@ -48,11 +48,6 @@ const makeGetRequest = function (pageNumber) {
 							edit.addEventListener("click", function () {
 								putInformationInFormPatch(sitzung);
 							});
-
-							let del = document.getElementById("delete");
-							del.addEventListener("click", function () {
-								makeDelRequest(sitzung._id);
-							});
 						});
 					});
 					setLoadingAnim(false);
@@ -140,7 +135,9 @@ const makePatchRequest = function (evt) {
 };
 
 const makeDelRequest = function (id) {
-	axios.delete("/sitzungen/" + id).then(data => {
+	const activeLi = document.getElementById("sitzung-list").getElementsByClassName("active")[0];
+
+	axios.delete("/sitzungen/" + activeLi.id).then(data => {
 		console.log(data);
 		makeGetRequest();
 		clearSitzungInfo();
