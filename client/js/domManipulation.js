@@ -16,6 +16,9 @@ const addListToUl = (sitzung, index, ul) => {
 };
 
 const putInformationInForm = (sitzung) => {
+	let sitzungInformation = document.getElementById("sitzungInformation");
+	sitzungInformation.style.display = "block";
+
 	let ortsname = document.getElementById("ortsname");
 	ortsname.value = sitzung.ort;
 	let datum = document.getElementById("datum");
@@ -32,9 +35,6 @@ const putInformationInForm = (sitzung) => {
 		input.value = element;
 		div.appendChild(input);
 	});
-
-	// Array anlegen, welches alle Objekte einer Sitzung enthält
-	// Schleife die so viele inputs anlegt, wie im Array Objekte sind und direkt füllen
 };
 
 /*

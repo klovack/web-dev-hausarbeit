@@ -51,27 +51,28 @@
 
             </aside>
 
-            <section>
+            <section id="section">
                 <div class="section-header-container">
                     <div>
                         <i class="material-icons md-24">info</i>
                         <h2>Sitzungsinformationen</h2>
                     </div>
-                    <i class="material-icons md-36">edit</i>
+                    <i class="material-icons md-36" style="display: none;">edit</i>
                 </div>
 
-                <div class="section-content-container">
-                    
-                    <form>
-                        <input type="text" name="ortsname" id="ortsname">
-                        <input type="date" name="datum" id="datum">
-                        <div id="objects_container">
-                            <input type="text">
-                        </div>
-                    </form>
+                <div class="section-content-container" >
 
-                    <button id="postSitzung">Post Sitzung</button>
-                    <button id="patchSitzung">Patch Sitzung</button>
+                    <div id="sitzungInformation" style="display: none;">
+                        <form>
+                            <label for="ortsname">Ortsname</label>
+                            <input type="text" name="ortsname" id="ortsname">
+                            <label for="datum">Geplantes Datum</label>
+                            <input type="date" name="datum" id="datum">
+                            <div id="objects_container">
+                                <input type="text">
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
             </section>
