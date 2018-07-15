@@ -6,7 +6,7 @@ let itemCount = 0;
 	otherwise it won't call the function
 */
 
-const { clearSitzungInfo } = require("./domManipulation");
+const { clearSitzungInfo, addObject } = require("./domManipulation");
 const { makePostRequest, makeGetRequest, makePatchRequest } = require("./serverRequest");
 
 const debounce = (func, wait, immediate) => {
@@ -31,6 +31,7 @@ const addListenerToControls = () => {
 	addListenerToPatchRequest();
 	addListenerToCreateNewButton();
 	addListenerToCreateCancelButton();
+	addListenerToAddButton();
 };
 
 const addListenerToPagination = () => {
@@ -65,6 +66,13 @@ const addListenerToCreateNewButton = () => {
 	createNew.addEventListener("click", function () {
 		// Here display the empty field
 		console.log("Display empty form");
+	});
+};
+
+const addListenerToAddButton = () => {
+	let add = document.getElementById("add");
+	add.addEventListener("click", function () {
+		addObject();
 	});
 };
 

@@ -74,7 +74,6 @@ const putInformationInFormDetail = (sitzung) => {
 		input.disabled = true;
 		div.appendChild(input);
 	}
-	setListenerOnCancel();
 };
 
 const putInformationInFormPatch = (sitzung) => {
@@ -135,8 +134,6 @@ const putInformationInFormPatch = (sitzung) => {
 		div.appendChild(innDiv);
 	});
 	setListenerOnIc();
-	setListenerOnAdd();
-	setListenerOnCancel();
 };
 
 const setListenerOnIc = function () {
@@ -150,13 +147,6 @@ const setListenerOnIc = function () {
 			ic.style.cursor = "pointer";
 		}
 	}
-};
-
-const setListenerOnAdd = function () {
-	let add = document.getElementById("add");
-	add.addEventListener("click", function () {
-		addObject();
-	});
 };
 
 const deleteObject = function (index) {
@@ -289,4 +279,4 @@ const setTheLiToActive = function (id) {
 	}
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim, clearSitzungInfo, setTheLiToActive };
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim, clearSitzungInfo, setTheLiToActive, addObject };
