@@ -49,11 +49,10 @@ const makeGetRequest = function (pageNumber) {
 								putInformationInFormPatch(sitzung);
 							});
 
-							// This always throws error, because it is undefined
-							// let patch = document.getElementById("patch");
-							// patch.addEventListener("click", function () {
-							// 	makePatchRequest();
-							// });
+							let del = document.getElementById("delete");
+							del.addEventListener("click", function () {
+								makeDelRequest(sitzung._id);
+							});
 						});
 					});
 					setLoadingAnim(false);
@@ -147,6 +146,7 @@ const makeDelRequest = function (id) {
 		console.log(err);
 	});
 	makeGetRequest();
+	clearSitzungInfo();
 };
 
 module.exports = { makeGetRequest, makePostRequest, makeGetIdRequest, makeDelRequest, makePatchRequest };

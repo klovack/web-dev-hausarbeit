@@ -31,6 +31,11 @@ const putInformationInFormPost = () => {
 		post.style.display = "inline-block";
 	}
 
+	let del = document.getElementById("delete");
+	if (del.style.display !== "none") {
+		del.style.display = "none";
+	}
+
 	let createNew = document.getElementById("createNew");
 	createNew.style.display = "none";
 
@@ -69,6 +74,11 @@ const putInformationInFormDetail = (sitzung) => {
 	let post = document.getElementById("postSitzung");
 	if (post.style.display !== "none") {
 		post.style.display = "none";
+	}
+
+	let del = document.getElementById("delete");
+	if (del.style.display === "none") {
+		del.style.display = "inline-block";
 	}
 
 	let createNew = document.getElementById("createNew");
@@ -130,6 +140,11 @@ const putInformationInFormPatch = (sitzung) => {
 	let post = document.getElementById("postSitzung");
 	if (post.style.display !== "none") {
 		post.style.display = "none";
+	}
+
+	let del = document.getElementById("delete");
+	if (del.style.display === "none") {
+		del.style.display = "inline-block";
 	}
 
 	let createNew = document.getElementById("createNew");
@@ -314,6 +329,9 @@ const setToDefaultButtons = function () {
 
 	let cancel = document.getElementById("cancel");
 	cancel.style.display = "none";
+
+	let del = document.getElementById("delete");
+	del.style.display = "none";
 };
 
 const setTheLiToActive = function (id) {
