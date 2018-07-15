@@ -117,4 +117,14 @@ const showPrevArrow = function () {
 	document.getElementById("arrow-previous").classList.remove("hide");
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination };
+const setLoadingAnim = function (isLoading) {
+	let loadingSpinner = document.getElementById("spinner-loader");
+	if (isLoading) {
+		loadingSpinner.classList.add("active");
+	}
+	else {
+		loadingSpinner.classList.remove("active");
+	}
+};
+
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination, setLoadingAnim };

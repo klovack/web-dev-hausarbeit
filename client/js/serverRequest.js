@@ -2,7 +2,7 @@ const axios = require("axios");
 const moment = require("moment");
 
 let { itemCount } = require("./util");
-const { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination } = require("./domManipulation");
+const { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination, setLoadingAnim } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen
@@ -12,6 +12,7 @@ const { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePa
 const makeGetRequest = function (pageNumber) {
 	calculateNumOfItem()
 		.then(numOfItems => {
+			setLoadingAnim(true);
 			axios.get(`/sitzungen?json=true&count=${numOfItems}&page=${pageNumber}`)
 				.then(data => {
 					let ul = document.getElementById("sitzung-list");
@@ -37,6 +38,7 @@ const makeGetRequest = function (pageNumber) {
 							putInformationInFormDetail(sitzung);
 						});
 					});
+					setLoadingAnim(false);
 				})
 				.catch(err => {
 					console.log(err);
