@@ -30,6 +30,7 @@ const addListenerToControls = () => {
 	addListenerToPagination();
 	addListenerToPatchRequest();
 	addListenerToCreateNewButton();
+	addListenerToCreateCancelButton();
 };
 
 const addListenerToPagination = () => {
@@ -64,6 +65,13 @@ const addListenerToCreateNewButton = () => {
 	createNew.addEventListener("click", function () {
 		// Here display the empty field
 		console.log("Display empty form");
+	});
+};
+
+const addListenerToCreateCancelButton = () => {
+	let createNew = document.getElementById("cancel");
+	createNew.addEventListener("click", function () {
+		clearSitzungInfo();
 	});
 };
 
