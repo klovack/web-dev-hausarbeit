@@ -31,6 +31,11 @@ const putInformationInFormDetail = (sitzung) => {
 		patch.style.display = "none";
 	}
 
+	let add = document.getElementById("add");
+	if (add.style.display !== "none") {
+		add.style.display = "none";
+	}
+
 	let ortsname = document.getElementById("ortsname");
 	ortsname.value = sitzung.ort;
 	ortsname.disabled = true;
@@ -74,6 +79,11 @@ const putInformationInFormPatch = (sitzung) => {
 		patchic.style.display = "block";
 	}
 
+	let add = document.getElementById("add");
+	if (add.style.display === "none") {
+		add.style.display = "inline-block";
+	}
+
 	let ortsname = document.getElementById("ortsname");
 	ortsname.disabled = false;
 	ortsname.value = sitzung.ort;
@@ -98,11 +108,11 @@ const putInformationInFormPatch = (sitzung) => {
 		div.appendChild(innDiv);
 	});
 	setListenerOnIc();
+	setListenerOnAdd();
 };
 
 const setListenerOnIc = function () {
 	let div = document.getElementById("objects_container");
-	console.log("huhu");
 	for (let i = 0; i < div.children.length; i++) {
 		let ic = document.getElementById("ic-" + i);
 		ic.addEventListener("click", function () {
@@ -112,10 +122,32 @@ const setListenerOnIc = function () {
 	}
 };
 
+const setListenerOnAdd = function () {
+	let add = document.getElementById("add");
+	add.addEventListener("click", function () {
+		addObject();
+	});
+};
+
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
 	div.removeChild(del);
+};
+
+const addObject = function () {
+	let div = document.getElementById("objects_container");
+	let innDiv = document.createElement("div");
+	console.log(div.children.length);
+	innDiv.id = "innDiv-" + div.children.length;
+	innDiv.innerHTML = `
+					<input type="text" id="objekt-${div.children.length}" style="display: inline-block;">
+					<i class="material-icons md-24" id="ic-${div.children.length}">delete</i>
+					`;
+	innDiv.style.display = "flex";
+	innDiv.style.alignItems = "center";
+	div.appendChild(innDiv);
+	setListenerOnIc();
 };
 
 /*

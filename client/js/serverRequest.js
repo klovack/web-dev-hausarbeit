@@ -42,7 +42,7 @@ const makeGetRequest = function (pageNumber) {
 								putInformationInFormPatch(sitzung);
 							});
 
-							let patch = document.getElementById("patch");
+							let patch = document.getElementById("patchSitzung");
 							patch.addEventListener("click", function () {
 								makePatchRequest();
 							});
