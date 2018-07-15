@@ -139,15 +139,12 @@ const putInformationInFormPatch = (sitzung) => {
 
 const setListenerOnIc = function () {
 	let div = document.getElementById("objects_container");
-	for (let i = 0; i < div.children.length; i++) {
-		let ic = document.getElementById("ic-" + i);
-		if (i === div.children.length - 1) {
-			ic.addEventListener("click", function () {
-				deleteObject(i);
-			});
-			ic.style.cursor = "pointer";
-		}
-	}
+
+	let ic = document.getElementById("ic-" + (div.children.length - 1));
+	ic.addEventListener("click", function () {
+		deleteObject((div.children.length - 1));
+	});
+	ic.style.cursor = "pointer";
 };
 
 const setListenerOnAdd = function () {
@@ -160,10 +157,8 @@ const setListenerOnAdd = function () {
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
-	console.log(del);
 	div.removeChild(del);
 	del.remove();
-	console.log(del);
 };
 
 const addObject = function () {
@@ -177,7 +172,6 @@ const addObject = function () {
 	innDiv.style.display = "flex";
 	innDiv.style.alignItems = "center";
 	div.appendChild(innDiv);
-	console.log(div.children.length);
 	setListenerOnIc();
 };
 
