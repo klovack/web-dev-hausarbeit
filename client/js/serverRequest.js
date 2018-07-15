@@ -41,6 +41,11 @@ const makeGetRequest = function (pageNumber) {
 							edit.addEventListener("click", function () {
 								putInformationInFormPatch(sitzung);
 							});
+
+							let patch = document.getElementById("patch");
+							patch.addEventListener("click", function () {
+								makePatchRequest();
+							});
 						});
 					});
 					setLoadingAnim(false);
@@ -98,7 +103,9 @@ const makePatchRequest = function () {
 	let beobachtendeObjekte = [];
 
 	for (var i = 0; i < inputs.length; i++) {
-		beobachtendeObjekte[i] = inputs[i].value;
+		if (inputs[i].value !== "") {
+			beobachtendeObjekte[i] = inputs[i].value;
+		}
 	}
 
 	const activeLi = document.getElementById("sitzung-list").getElementsByClassName("active")[0];
@@ -110,6 +117,7 @@ const makePatchRequest = function () {
 	}).then(data => {
 		console.log(data);
 		makeGetRequest();
+		location.reload();
 	}).catch(err => {
 		console.log(err);
 	});

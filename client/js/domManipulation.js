@@ -26,6 +26,11 @@ const putInformationInFormDetail = (sitzung) => {
 		edit.style.display = "inline-block";
 	}
 
+	let patch = document.getElementById("patchSitzung");
+	if (patch.style.display !== "none") {
+		patch.style.display = "none";
+	}
+
 	let ortsname = document.getElementById("ortsname");
 	ortsname.value = sitzung.ort;
 	ortsname.disabled = true;
@@ -64,6 +69,11 @@ const putInformationInFormPatch = (sitzung) => {
 		edit.style.display = "none";
 	}
 
+	let patchic = document.getElementById("patchSitzung");
+	if (patchic.style.display === "none") {
+		patchic.style.display = "block";
+	}
+
 	let ortsname = document.getElementById("ortsname");
 	ortsname.disabled = false;
 	ortsname.value = sitzung.ort;
@@ -98,6 +108,7 @@ const setListenerOnIc = function () {
 		ic.addEventListener("click", function () {
 			deleteObject(i);
 		});
+		ic.style.cursor = "pointer";
 	}
 };
 
