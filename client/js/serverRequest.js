@@ -142,11 +142,11 @@ const makePatchRequest = function (evt) {
 const makeDelRequest = function (id) {
 	axios.delete("/sitzungen/" + id).then(data => {
 		console.log(data);
+		makeGetRequest();
+		clearSitzungInfo();
 	}).catch(err => {
 		console.log(err);
 	});
-	makeGetRequest();
-	clearSitzungInfo();
 };
 
 module.exports = { makeGetRequest, makePostRequest, makeGetIdRequest, makeDelRequest, makePatchRequest };

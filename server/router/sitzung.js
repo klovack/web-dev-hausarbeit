@@ -33,7 +33,7 @@ router.get("/", queryCheck, (req, res) => {
 			limit: count,
 			skip,
 			sort: {
-				modifiedAt: 1 //Sort by date
+				modifiedAt: -1 //Sort by date
 			}
 		})
 			.then(sitzungen => {
@@ -178,6 +178,8 @@ router.patch("/:id", (req, res) => {
 	else if (req.body.datum) {
 		toBeUpdated.datum = moment(req.body.datum);
 	}
+
+	toBeUpdated.modifiedAt = Date.now();
 
 	// Update the sitzung
 	Sitzung.findOneAndUpdate({
