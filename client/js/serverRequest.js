@@ -48,18 +48,11 @@ const makeGetRequest = function (pageNumber) {
 								putInformationInFormPatch(sitzung);
 							});
 
-<<<<<<< HEAD
 							// This always throws error, because it is undefined
 							// let patch = document.getElementById("patch");
 							// patch.addEventListener("click", function () {
 							// 	makePatchRequest();
 							// });
-=======
-							let patch = document.getElementById("patchSitzung");
-							patch.addEventListener("click", function () {
-								makePatchRequest();
-							});
->>>>>>> d145ccb12e7828fba144cf0b27b4652bd74a9e0f
 						});
 					});
 					setLoadingAnim(false);
