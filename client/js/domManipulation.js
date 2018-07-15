@@ -153,4 +153,14 @@ const showPrevArrow = function () {
 	document.getElementById("arrow-previous").classList.remove("hide");
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination };
+const setLoadingAnim = function (isLoading) {
+	let loadingSpinner = document.getElementById("spinner-loader");
+	if (isLoading) {
+		loadingSpinner.classList.add("onload");
+	}
+	else {
+		loadingSpinner.classList.remove("onload");
+	}
+};
+
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination, setLoadingAnim };
