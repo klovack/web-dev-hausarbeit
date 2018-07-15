@@ -36,6 +36,12 @@ const putInformationInFormDetail = (sitzung) => {
 		input.disabled = true;
 		div.appendChild(input);
 	});
+	if (!div.hasChildNodes()) {
+		let input = document.createElement("input");
+		input.value = "Keine Objekte gesichtet";
+		input.disabled = true;
+		div.appendChild(input);
+	}
 };
 
 const showDetailed = function () {
