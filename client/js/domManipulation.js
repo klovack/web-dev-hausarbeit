@@ -71,7 +71,6 @@ const putInformationInFormDetail = (sitzung) => {
 		input.disabled = true;
 		div.appendChild(input);
 	}
-	setListenerOnCancel();
 };
 
 const putInformationInFormPatch = (sitzung) => {
@@ -130,7 +129,6 @@ const putInformationInFormPatch = (sitzung) => {
 	});
 	setListenerOnIc();
 	setListenerOnAdd();
-	setListenerOnCancel();
 };
 
 const setListenerOnIc = function () {
@@ -151,23 +149,16 @@ const setListenerOnAdd = function () {
 	});
 };
 
-const setListenerOnCancel = function () {
-	let cancel = document.getElementById("cancel");
-	cancel.addEventListener("click", function () {
-		location.reload();
-	});
-};
-
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
 	div.removeChild(del);
+	setListenerOnIc();
 };
 
 const addObject = function () {
 	let div = document.getElementById("objects_container");
 	let innDiv = document.createElement("div");
-	console.log(div.children.length);
 	innDiv.id = "innDiv-" + div.children.length;
 	innDiv.innerHTML = `
 					<input type="text" id="objekt-${div.children.length}" style="display: inline-block;">
@@ -176,6 +167,7 @@ const addObject = function () {
 	innDiv.style.display = "flex";
 	innDiv.style.alignItems = "center";
 	div.appendChild(innDiv);
+	console.log(div.children.length);
 	setListenerOnIc();
 };
 
