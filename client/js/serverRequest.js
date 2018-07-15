@@ -85,11 +85,11 @@ const makePostRequest = function () {
 		beobachtendeObjekte
 	}).then(data => {
 		console.log(data);
+		makeGetRequest();
+		clearSitzungInfo();
 	}).catch(err => {
 		console.log(err);
 	});
-
-	makeGetRequest();
 };
 
 const makeGetIdRequest = function (id) {

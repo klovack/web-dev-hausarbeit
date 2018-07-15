@@ -133,19 +133,28 @@ const putInformationInFormPatch = (sitzung) => {
 		innDiv.style.alignItems = "center";
 		div.appendChild(innDiv);
 	});
-	setListenerOnIc();
+	setListenerOnIc(true);
 };
 
-const setListenerOnIc = function () {
+const setListenerOnIc = function (isNew) {
 	let div = document.getElementById("objects_container");
-	for (let i = 0; i < div.children.length; i++) {
-		if (i === div.children.length - 1) {
+
+	if (isNew) {
+		for (let i = 0; i < div.children.length; i++) {
 			let ic = document.getElementById("ic-" + i);
 			ic.addEventListener("click", function () {
 				deleteObject(i);
 			});
 			ic.style.cursor = "pointer";
 		}
+	}
+	else {
+		let i = div.children.length - 1;
+		let ic = document.getElementById("ic-" + i);
+		ic.addEventListener("click", function () {
+			deleteObject(i);
+		});
+		ic.style.cursor = "pointer";
 	}
 };
 
@@ -170,7 +179,7 @@ const addObject = function () {
 	innDiv.style.display = "flex";
 	innDiv.style.alignItems = "center";
 	div.appendChild(innDiv);
-	setListenerOnIc();
+	setListenerOnIc(false);
 };
 
 /*
