@@ -15,6 +15,41 @@ const addListToUl = (sitzung, index, ul) => {
 	return li;
 };
 
+const putInformationInFormPost = () => {
+	let detail = document.getElementById("sitzungInfo");
+	detail.style.display = "block";
+	detail.className = "";
+	detail.classList.add("sitzungPost");
+
+	let patch = document.getElementById("patchSitzung");
+	if (patch.style.display !== "none") {
+		patch.style.display = "none";
+	}
+
+	let post = document.getElementById("postSitzung");
+	if (post.style.display === "none") {
+		post.style.display = "inline-block";
+	}
+
+	let createNew = document.getElementById("createNew");
+	createNew.style.display = "none";
+
+	let cancel = document.getElementById("cancel");
+	if (cancel.style.display === "none") {
+		cancel.style.display = "inline-block";
+	}
+
+	let add = document.getElementById("add");
+	if (add.style.display === "none") {
+		add.style.display = "inline-block";
+	}
+
+	let ortsname = document.getElementById("ortsname");
+	ortsname.disabled = false;
+	let datum = document.getElementById("datum");
+	datum.disabled = false;
+};
+
 const putInformationInFormDetail = (sitzung) => {
 	let detail = document.getElementById("sitzungInfo");
 	detail.style.display = "block";
@@ -288,4 +323,4 @@ const setTheLiToActive = function (id) {
 	}
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim, clearSitzungInfo, setTheLiToActive, addObject };
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim, clearSitzungInfo, setTheLiToActive, addObject, putInformationInFormPost };

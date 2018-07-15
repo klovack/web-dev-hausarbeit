@@ -71,12 +71,13 @@ const makePostRequest = function () {
 	let datum = moment(datumInput.value);
 
 	let objektDiv = document.getElementById("objects_container");
-	let objektArray = objektDiv.getElementsByTagName("*");
+	let objektArray = objektDiv.getElementsByTagName("input");
 	let beobachtendeObjekte = [];
 
 	for (var i = 0; i < objektArray.length; i++) {
-		console.log(objektArray[i].value);
-		beobachtendeObjekte[i] = objektArray[i].value;
+		if (objektArray[i].value !== "") {
+			beobachtendeObjekte[i] = objektArray[i].value;
+		}
 	}
 
 	axios.post("/sitzungen", {

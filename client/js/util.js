@@ -6,7 +6,7 @@ let itemCount = 0;
 	otherwise it won't call the function
 */
 
-const { clearSitzungInfo, addObject } = require("./domManipulation");
+const { clearSitzungInfo, addObject, putInformationInFormPost } = require("./domManipulation");
 const { makePostRequest, makeGetRequest, makePatchRequest } = require("./serverRequest");
 
 const debounce = (func, wait, immediate) => {
@@ -64,8 +64,7 @@ const addListenerToPatchRequest = () => {
 const addListenerToCreateNewButton = () => {
 	let createNew = document.getElementById("createNew");
 	createNew.addEventListener("click", function () {
-		// Here display the empty field
-		console.log("Display empty form");
+		putInformationInFormPost();
 	});
 };
 
