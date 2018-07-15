@@ -16,16 +16,25 @@ const addListToUl = (sitzung, index, ul) => {
 };
 
 const putInformationInFormDetail = (sitzung) => {
-	hideSections();
-	showDetailed();
+	let detail = document.getElementById("sitzungInfo");
+	detail.style.display = "block";
+	detail.className = "";
+	detail.classList.add("sitzungDetail");
 
-	let ortsname = document.getElementById("ortsname_detail");
+	let edit = document.getElementById("edit");
+	if (edit.style.display === "none") {
+		edit.style.display = "inline-block";
+	}
+
+	let ortsname = document.getElementById("ortsname");
 	ortsname.value = sitzung.ort;
-	let datum = document.getElementById("datum_detail");
+	ortsname.disabled = true;
+	let datum = document.getElementById("datum");
 	datum.value = moment(sitzung.datum).format("YYYY-MM-DD");
+	datum.disabled = true;
 
 	let objektArray = sitzung.beobachtendeObjekte;
-	let div = document.getElementById("objects_container_detail");
+	let div = document.getElementById("objects_container");
 	while (div.hasChildNodes()) {
 		div.removeChild(div.lastChild);
 	}
@@ -45,16 +54,25 @@ const putInformationInFormDetail = (sitzung) => {
 };
 
 const putInformationInFormPatch = (sitzung) => {
-	hideSections();
-	showPatch();
+	let patch = document.getElementById("sitzungInfo");
+	patch.style.display = "block";
+	patch.className = "";
+	patch.classList.add("sitzungPatch");
 
-	let ortsname = document.getElementById("ortsname_patch");
+	let edit = document.getElementById("edit");
+	if (edit.style.display !== "none") {
+		edit.style.display = "none";
+	}
+
+	let ortsname = document.getElementById("ortsname");
+	ortsname.disabled = false;
 	ortsname.value = sitzung.ort;
-	let datum = document.getElementById("datum_patch");
+	let datum = document.getElementById("datum");
+	datum.disabled = false;
 	datum.value = moment(sitzung.datum).format("YYYY-MM-DD");
 
 	let objektArray = sitzung.beobachtendeObjekte;
-	let div = document.getElementById("objects_container_patch");
+	let div = document.getElementById("objects_container");
 	while (div.hasChildNodes()) {
 		div.removeChild(div.lastChild);
 	}
@@ -62,46 +80,9 @@ const putInformationInFormPatch = (sitzung) => {
 		let input = document.createElement("input");
 		input.id = `objekt-${index}`;
 		input.value = element;
-		input.disabled = true;
+		input.disabled = false;
 		div.appendChild(input);
 	});
-};
-
-const showDetailed = function () {
-	let sitzungDetail = document.getElementById("sitzungDetail");
-	if (sitzungDetail.style.display === "none") {
-		sitzungDetail.style.display = "block";
-	}
-	let edit = document.getElementById("edit");
-	if (edit.style.display === "none") {
-		edit.style.display = "inline-block";
-	}
-};
-
-const showPatch = function () {
-	let sitzungPatch = document.getElementById("sitzungPatch");
-	if (sitzungPatch.style.display === "none") {
-		sitzungPatch.style.display = "block";
-	}
-};
-
-const hideSections = function () {
-	let sitzungDetail = document.getElementById("sitzungDetail");
-	if (sitzungDetail.style.display !== "none") {
-		sitzungDetail.style.display = "none";
-	}
-	let sitzungPatch = document.getElementById("sitzungPatch");
-	if (sitzungPatch.style.display !== "none") {
-		sitzungPatch.style.display = "none";
-	}
-	let sitzungPost = document.getElementById("sitzungPost");
-	if (sitzungPost.style.display !== "none") {
-		sitzungPost.style.display = "none";
-	}
-	let edit = document.getElementById("edit");
-	if (edit.style.display !== "none") {
-		edit.style.display = "none";
-	}
 };
 
 /*
@@ -163,4 +144,4 @@ const setLoadingAnim = function (isLoading) {
 	}
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination, setLoadingAnim };
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim };

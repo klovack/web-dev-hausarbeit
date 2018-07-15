@@ -2,7 +2,7 @@ const axios = require("axios");
 const moment = require("moment");
 
 let { itemCount } = require("./util");
-const { addListToUl, calculateNumOfItem, putInformationInFormDetail, calculatePagination, setLoadingAnim } = require("./domManipulation");
+const { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen
@@ -36,6 +36,11 @@ const makeGetRequest = function (pageNumber) {
 
 							li.classList.add("active");
 							putInformationInFormDetail(sitzung);
+
+							let edit = document.getElementById("edit");
+							edit.addEventListener("click", function () {
+								putInformationInFormPatch(sitzung);
+							});
 						});
 					});
 					setLoadingAnim(false);

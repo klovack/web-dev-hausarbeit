@@ -63,54 +63,24 @@
 
                 <div class="section-content-container" >
 
-                    <div id="sitzungDetail" style="display: none;">
+                    <div id="sitzungInfo" style="display: none;">
                         <form>
                             <div>
-                                <label for="ortsname_detail">Ortsname</label>
-                                <input type="text" name="ortsname" id="ortsname_detail" disabled>
+                                <label for="ortsname">Ortsname</label>
+                                <input type="text" name="ortsname" id="ortsname">
                             </div>
                             <div>
-                                <label for="datum_detail">Datum</label>
-                                <input type="date" name="datum" id="datum_detail" disabled>
+                                <label for="datum">Datum</label>
+                                <input type="date" name="datum" id="datum">
                             </div>
                             <div class="object_overflow">
-                                <label for="objects_container_detail">Gesichtete Objekte</label>
-                                <div id="objects_container_detail">
+                                <label for="objects_container">Gesichtete Objekte</label>
+                                <div id="objects_container">
                                     <input type="text" disabled>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-
-                    <div id="sitzungPatch" style="display: none;">
-                        <form>
-                            <div>
-                                <label for="ortsname_patch">Ortsname</label>
-                                <input type="text" name="ortsname" id="ortsname_patch">
-                            </div>
-                            <div>
-                                <label for="datum">Geplantes Datum</label>
-                                <input type="date" name="datum" id="datum_patch">
-                            </div>
-                            <div class="object_overflow">
-                                <div id="objects_container_patch">
-                                        <input type="text">
-                                </div>
-                            </div>
-                            <button id="patchSitzung">Patch Sitzung</button>
-                        </form>
-                    </div>
-
-                    <div id="sitzungPost" style="display: none;">
-                        <form>
-                            <label for="ortsname">Ortsname</label>
-                            <input type="text" name="ortsname" id="ortsname_post">
-                            <label for="datum">Geplantes Datum</label>
-                            <input type="date" name="datum" id="datum_post">
-                            <div id="objects_container_post">
-                                <input type="text">
-                            </div>
-                            <button id="postSitzung">Post Sitzung</button>
+                            <button id="postSitzung" style="display: none;">Post Sitzung</button>
+                            <button id="patchSitzung" style="display: none;">Patch Sitzung</button>
                         </form>
                     </div>
 
