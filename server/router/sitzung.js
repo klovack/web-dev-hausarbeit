@@ -33,7 +33,7 @@ router.get("/", queryCheck, (req, res) => {
 			limit: count,
 			skip,
 			sort: {
-				Timestamp: -1 //Sort by Timestamp
+				modifiedAt: 1 //Sort by date
 			}
 		})
 			.then(sitzungen => {
@@ -69,6 +69,8 @@ router.post("/", (req, res) => {
 	else {
 		sitzung.datum = moment(req.body.datum);
 	}
+
+	sitzung.createdAt = Date.now();
 
 	sitzung.save().then(document => {
 		res.send(document);

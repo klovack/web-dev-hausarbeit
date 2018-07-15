@@ -13,6 +13,14 @@ const SitzungSchema = new mongoose.Schema({
 	_benutzer: {
 		type: mongoose.Schema.Types.ObjectId,
 		// required: true
+	},
+	createdAt: {
+		type: Date,
+		required: true
+	},
+	modifiedAt: {
+		type: Date,
+		default: Date.now
 	}
 });
 
