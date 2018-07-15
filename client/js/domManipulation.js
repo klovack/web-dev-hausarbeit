@@ -31,6 +31,21 @@ const putInformationInFormDetail = (sitzung) => {
 		patch.style.display = "none";
 	}
 
+	let post = document.getElementById("postSitzung");
+	if (post.style.display !== "none") {
+		post.style.display = "none";
+	}
+
+	let cancel = document.getElementById("cancel");
+	if (cancel.style.display === "none") {
+		cancel.style.display = "inline-block";
+	}
+
+	let add = document.getElementById("add");
+	if (add.style.display !== "none") {
+		add.style.display = "none";
+	}
+
 	let ortsname = document.getElementById("ortsname");
 	ortsname.value = sitzung.ort;
 	ortsname.disabled = true;
@@ -56,6 +71,7 @@ const putInformationInFormDetail = (sitzung) => {
 		input.disabled = true;
 		div.appendChild(input);
 	}
+	setListenerOnCancel();
 };
 
 const putInformationInFormPatch = (sitzung) => {
@@ -71,7 +87,22 @@ const putInformationInFormPatch = (sitzung) => {
 
 	let patchic = document.getElementById("patchSitzung");
 	if (patchic.style.display === "none") {
-		patchic.style.display = "block";
+		patchic.style.display = "inline-block";
+	}
+
+	let post = document.getElementById("postSitzung");
+	if (post.style.display !== "none") {
+		post.style.display = "none";
+	}
+
+	let cancel = document.getElementById("cancel");
+	if (cancel.style.display === "none") {
+		cancel.style.display = "inline-block";
+	}
+
+	let add = document.getElementById("add");
+	if (add.style.display === "none") {
+		add.style.display = "inline-block";
 	}
 
 	let ortsname = document.getElementById("ortsname");
@@ -98,11 +129,12 @@ const putInformationInFormPatch = (sitzung) => {
 		div.appendChild(innDiv);
 	});
 	setListenerOnIc();
+	setListenerOnAdd();
+	setListenerOnCancel();
 };
 
 const setListenerOnIc = function () {
 	let div = document.getElementById("objects_container");
-	console.log("huhu");
 	for (let i = 0; i < div.children.length; i++) {
 		let ic = document.getElementById("ic-" + i);
 		ic.addEventListener("click", function () {
@@ -112,10 +144,39 @@ const setListenerOnIc = function () {
 	}
 };
 
+const setListenerOnAdd = function () {
+	let add = document.getElementById("add");
+	add.addEventListener("click", function () {
+		addObject();
+	});
+};
+
+const setListenerOnCancel = function () {
+	let cancel = document.getElementById("cancel");
+	cancel.addEventListener("click", function () {
+		location.reload();
+	});
+};
+
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
 	div.removeChild(del);
+};
+
+const addObject = function () {
+	let div = document.getElementById("objects_container");
+	let innDiv = document.createElement("div");
+	console.log(div.children.length);
+	innDiv.id = "innDiv-" + div.children.length;
+	innDiv.innerHTML = `
+					<input type="text" id="objekt-${div.children.length}" style="display: inline-block;">
+					<i class="material-icons md-24" id="ic-${div.children.length}">delete</i>
+					`;
+	innDiv.style.display = "flex";
+	innDiv.style.alignItems = "center";
+	div.appendChild(innDiv);
+	setListenerOnIc();
 };
 
 /*
