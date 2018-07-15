@@ -23,19 +23,26 @@ router.get("/", queryCheck, (req, res) => {
 	page = page <= 0 ? 1 : page;
 	const skip = count * (page - 1);
 
-	Sitzung.find({
-		// _benutzer: req.user._id
-	}, null, { limit: count, skip })
-		.then(sitzungen => {
-			Sitzung.count().then(count => {
-				res.send({ sitzungen, itemCount: count, pageNumber: page });			// Send sitzung if found
+	Sitzung.count().then(itemCount => {
+		const numOfPages = Math.ceil(itemCount / count);
+		page = page > numOfPages ? numOfPages : page;
+
+		return Sitzung.find({
+			// _benutzer: req.user._id
+		}, null, { limit: count, skip })
+			.then(sitzungen => {
+				Sitzung.count().then(count => {
+					res.send({ sitzungen, itemCount: count, pageNumber: page });			// Send sitzung if found
+				});
+			}, error => {
+				res.status(400).send(error);		// Send error if there's database error
+			})
+			.catch(error => {
+				res.status(500).send(error);		// Send error if there's unexpected error
 			});
-		}, error => {
-			res.status(400).send(error);		// Send error if there's database error
-		})
-		.catch(error => {
-			res.status(500).send(error);		// Send error if there's unexpected error
-		});
+	}).catch(error => {
+		res.status(500).send(error);		// Send error if there's unexpected error
+	});
 });
 
 // Create new sitzung
