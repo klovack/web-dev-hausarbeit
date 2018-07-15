@@ -62,15 +62,41 @@
 
                 <div class="section-content-container" >
 
-                    <div id="sitzungInformation" style="display: none;">
+                    <div id="sitzungDetail" style="display: none;">
                         <form>
-                            <label for="ortsname">Ortsname</label>
-                            <input type="text" name="ortsname" id="ortsname">
-                            <label for="datum">Geplantes Datum</label>
-                            <input type="date" name="datum" id="datum">
-                            <div id="objects_container">
+                            <label for="ortsname_detail">Ortsname</label>
+                            <input type="text" name="ortsname" id="ortsname_detail">
+                            <label for="datum_detail">Geplantes Datum</label>
+                            <input type="date" name="datum" id="datum_detail">
+                            <div id="objects_container_detail">
                                 <input type="text">
                             </div>
+                        </form>
+                    </div>
+
+                    <div id="sitzungPatch" style="display: none;">
+                        <form>
+                            <label for="ortsname_patch">Ortsname</label>
+                            <input type="text" name="ortsname" id="ortsname_patch">
+                            <label for="datum">Geplantes Datum</label>
+                            <input type="date" name="datum" id="datum_patch">
+                            <div id="objects_container_patch">
+                                <input type="text">
+                            </div>
+                            <button id="patchSitzung">Patch Sitzung</button>
+                        </form>
+                    </div>
+
+                    <div id="sitzungPost" style="display: none;">
+                        <form>
+                            <label for="ortsname">Ortsname</label>
+                            <input type="text" name="ortsname" id="ortsname_post">
+                            <label for="datum">Geplantes Datum</label>
+                            <input type="date" name="datum" id="datum_post">
+                            <div id="objects_container_post">
+                                <input type="text">
+                            </div>
+                            <button id="postSitzung">Post Sitzung</button>
                         </form>
                     </div>
 

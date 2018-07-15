@@ -16,16 +16,16 @@ const addListToUl = (sitzung, index, ul) => {
 };
 
 const putInformationInForm = (sitzung) => {
-	let sitzungInformation = document.getElementById("sitzungInformation");
-	sitzungInformation.style.display = "block";
+	hideSections();
+	showDetailed();
 
-	let ortsname = document.getElementById("ortsname");
+	let ortsname = document.getElementById("ortsname_detail");
 	ortsname.value = sitzung.ort;
-	let datum = document.getElementById("datum");
+	let datum = document.getElementById("datum_detail");
 	datum.value = moment(sitzung.datum).format("YYYY-MM-DD");
 
 	let objektArray = sitzung.beobachtendeObjekte;
-	let div = document.getElementById("objects_container");
+	let div = document.getElementById("objects_container_detail");
 	while (div.hasChildNodes()) {
 		div.removeChild(div.lastChild);
 	}
@@ -35,6 +35,28 @@ const putInformationInForm = (sitzung) => {
 		input.value = element;
 		div.appendChild(input);
 	});
+};
+
+const showDetailed = function () {
+	let sitzungDetail = document.getElementById("sitzungDetail");
+	if (sitzungDetail.style.display === "none") {
+		sitzungDetail.style.display = "block";
+	}
+};
+
+const hideSections = function () {
+	let sitzungDetail = document.getElementById("sitzungDetail");
+	if (sitzungDetail.style.display !== "none") {
+		sitzungDetail.style.display = "none";
+	}
+	let sitzungPatch = document.getElementById("sitzungPatch");
+	if (sitzungPatch.style.display !== "none") {
+		sitzungPatch.style.display = "none";
+	}
+	let sitzungPost = document.getElementById("sitzungPost");
+	if (sitzungPost.style.display !== "none") {
+		sitzungPost.style.display = "none";
+	}
 };
 
 /*
