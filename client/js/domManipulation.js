@@ -44,6 +44,29 @@ const putInformationInFormDetail = (sitzung) => {
 	}
 };
 
+const putInformationInFormPatch = (sitzung) => {
+	hideSections();
+	showPatch();
+
+	let ortsname = document.getElementById("ortsname_patch");
+	ortsname.value = sitzung.ort;
+	let datum = document.getElementById("datum_patch");
+	datum.value = moment(sitzung.datum).format("YYYY-MM-DD");
+
+	let objektArray = sitzung.beobachtendeObjekte;
+	let div = document.getElementById("objects_container_patch");
+	while (div.hasChildNodes()) {
+		div.removeChild(div.lastChild);
+	}
+	objektArray.forEach((element, index) => {
+		let input = document.createElement("input");
+		input.id = `objekt-${index}`;
+		input.value = element;
+		input.disabled = true;
+		div.appendChild(input);
+	});
+};
+
 const showDetailed = function () {
 	let sitzungDetail = document.getElementById("sitzungDetail");
 	if (sitzungDetail.style.display === "none") {
@@ -52,6 +75,13 @@ const showDetailed = function () {
 	let edit = document.getElementById("edit");
 	if (edit.style.display === "none") {
 		edit.style.display = "inline-block";
+	}
+};
+
+const showPatch = function () {
+	let sitzungPatch = document.getElementById("sitzungPatch");
+	if (sitzungPatch.style.display === "none") {
+		sitzungPatch.style.display = "block";
 	}
 };
 
