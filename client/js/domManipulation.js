@@ -74,6 +74,7 @@ const putInformationInFormDetail = (sitzung) => {
 		input.disabled = true;
 		div.appendChild(input);
 	}
+	setListenerOnCancel();
 };
 
 const putInformationInFormPatch = (sitzung) => {
@@ -135,6 +136,7 @@ const putInformationInFormPatch = (sitzung) => {
 	});
 	setListenerOnIc();
 	setListenerOnAdd();
+	setListenerOnCancel();
 };
 
 const setListenerOnIc = function () {
@@ -157,8 +159,6 @@ const setListenerOnAdd = function () {
 	});
 };
 
-<<<<<<< HEAD
-=======
 const setListenerOnCancel = function () {
 	let cancel = document.getElementById("cancel");
 	cancel.addEventListener("click", function () {
@@ -167,18 +167,12 @@ const setListenerOnCancel = function () {
 	});
 };
 
->>>>>>> fefef005e63b8b11640fc0619f7d1310710ae30b
 const deleteObject = function (index) {
 	let div = document.getElementById("objects_container");
 	let del = document.getElementById("innDiv-" + index);
 	console.log(del);
 	div.removeChild(del);
-<<<<<<< HEAD
-	del.remove();
-	console.log(del);
-=======
 	setListenerOnIc();
->>>>>>> 334c9c54786be29b26608d11a2af0616d50b836d
 };
 
 const addObject = function () {
