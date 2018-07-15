@@ -29,7 +29,13 @@ router.get("/", queryCheck, (req, res) => {
 
 		return Sitzung.find({
 			// _benutzer: req.user._id
-		}, null, { limit: count, skip })
+		}, null, {
+			limit: count,
+			skip,
+			sort: {
+				Timestamp: -1 //Sort by Timestamp
+			}
+		})
 			.then(sitzungen => {
 				Sitzung.count().then(count => {
 					res.send({ sitzungen, itemCount: count, pageNumber: page });			// Send sitzung if found

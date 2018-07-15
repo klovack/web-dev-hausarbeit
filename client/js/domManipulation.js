@@ -52,7 +52,7 @@ const putInformationInFormDetail = (sitzung) => {
 	});
 	if (!div.hasChildNodes()) {
 		let input = document.createElement("input");
-		input.value = "Keine Objekte gesichtet";
+		input.placeholder = "Keine Objekte gesichtet";
 		input.disabled = true;
 		div.appendChild(input);
 	}
@@ -177,4 +177,26 @@ const setLoadingAnim = function (isLoading) {
 	}
 };
 
-module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim };
+const clearSitzungInfo = function () {
+	let ortsnameInput = document.getElementById("ortsname");
+	let datumInput = document.getElementById("datum");
+	let objectsContainer = document.getElementById("objects_container");
+	let sitzungInfo = document.getElementById("sitzungInfo");
+
+	sitzungInfo.style.display = "none";
+
+	ortsnameInput.value = "";
+	datumInput.value = "";
+	while (objectsContainer.hasChildNodes()) {
+		objectsContainer.removeChild(objectsContainer.lastChild);
+	}
+};
+
+const setTheLiToActive = function (id) {
+	let li = document.getElementById(id);
+	if (li) {
+		li.classList.add("active");
+	}
+};
+
+module.exports = { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim, clearSitzungInfo, setTheLiToActive };

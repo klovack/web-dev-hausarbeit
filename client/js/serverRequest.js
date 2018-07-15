@@ -2,7 +2,13 @@ const axios = require("axios");
 const moment = require("moment");
 
 let { itemCount } = require("./util");
-const { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformationInFormPatch, calculatePagination, setLoadingAnim } = require("./domManipulation");
+const { addListToUl,
+	calculateNumOfItem,
+	putInformationInFormDetail,
+	putInformationInFormPatch,
+	calculatePagination,
+	setLoadingAnim,
+	setTheLiToActive } = require("./domManipulation");
 
 /*
     Make request to the server to get all of the sitzungen
@@ -10,7 +16,7 @@ const { addListToUl, calculateNumOfItem, putInformationInFormDetail, putInformat
     And then fetch the data from the server
 */
 const makeGetRequest = function (pageNumber) {
-	calculateNumOfItem()
+	return calculateNumOfItem()
 		.then(numOfItems => {
 			setLoadingAnim(true);
 			axios.get(`/sitzungen?json=true&count=${numOfItems}&page=${pageNumber}`)
@@ -42,10 +48,11 @@ const makeGetRequest = function (pageNumber) {
 								putInformationInFormPatch(sitzung);
 							});
 
-							let patch = document.getElementById("patch");
-							patch.addEventListener("click", function () {
-								makePatchRequest();
-							});
+							// This always throws error, because it is undefined
+							// let patch = document.getElementById("patch");
+							// patch.addEventListener("click", function () {
+							// 	makePatchRequest();
+							// });
 						});
 					});
 					setLoadingAnim(false);
@@ -92,7 +99,11 @@ const makeGetIdRequest = function (id) {
 	});
 };
 
-const makePatchRequest = function () {
+const makePatchRequest = function (evt) {
+	if (evt) {
+		evt.preventDefault();
+	}
+
 	let ort = document.getElementById("ortsname").value;
 
 	let datumInput = document.getElementById("datum");
@@ -115,9 +126,11 @@ const makePatchRequest = function () {
 		datum,
 		beobachtendeObjekte
 	}).then(data => {
-		console.log(data);
-		makeGetRequest();
-		location.reload();
+		makeGetRequest().then(() => {
+			setTheLiToActive(data.data.sitzung._id);
+		});
+		putInformationInFormDetail(data.data.sitzung);
+		//location.reload();
 	}).catch(err => {
 		console.log(err);
 	});
